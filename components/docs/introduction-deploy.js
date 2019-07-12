@@ -189,7 +189,7 @@ export class Editor extends React.PureComponent {
     this.state = {
       deploying: false,
       fileBrowserOpen: false,
-      selectedFilename: 'index.html',
+      selectedFilename: 'pages/index.js',
       vimMode: false,
       windowWidth: null
     }
