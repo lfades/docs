@@ -12,24 +12,8 @@ export const meta = {
   description:
     'Preparing to deploy applications by installing the official Now clients or service integrations.',
   editUrl: 'pages/docs/v2/getting-started/installation.mdx',
-  lastEdited: '2019-03-08T23:34:57.000Z'
+  lastEdited: '2019-07-12T21:40:06.000Z'
 }
-
-We officially support clients and service integrations that communicate with our [Public API](/docs/api) to enable simple deployment workflows.
-
-Our recommendation is to install:
-
-- [Now Desktop](#now-desktop) (which bundles [Now CLI](#now-cli)) to be able to quickly deploy while you develop and stay on top of your organization's events.
-- [Now for GitHub](#now-for-github) for a first-class [GitHub](https://github.com) integration that enables [push-to-deploy](/docs/v2/integrations/now-for-github/#a-deployment-for-each-push), [alias](/docs/v2/integrations/now-for-github/#aliasing-the-default-branch) to a [custom domain on merge](https://zeit.co/docs/v2/domains-and-aliases/adding-a-domain/), and much more.
-
-### Now Desktop
-
-The latest Now Desktop is available to [download from our website](/download).
-
-Alternatively, it can be installed with [brew](https://brew.sh/):
-
-<TerminalInput>{`brew update
-brew cask install now`}</TerminalInput>
 
 ### Now CLI
 
@@ -57,17 +41,11 @@ We distribute the [Now CLI Binaries](#from-binaries) via `npm`, for convenience 
 
 <TerminalInput>npm i -g now</TerminalInput>
 
-#### From Binaries
+### Now for GitHub and GitLab
 
-The Now CLI binaries are [available from our website](/download#now-cli) for macOS, Windows, Linux, and Alpine Linux.
+Use the official [Now for GitHub](/docs/v2/integrations/now-for-github) and [Now for GitLab](/docs/v2/integrations/now-for-gitlab) integrations to automatically deploy each push and alias the latest iteration on the default branch.
 
-These binaries do **not** need Node.js installed to run.
-
-### Now for GitHub
-
-Use the official Now for GitHub integration to automatically deploy each push and alias the latest iteration on the default branch.
-
-Now for GitHub can be installed from the [account settings page](/account) as shown below:
+[Now for GitHub](/docs/v2/integrations/now-for-github) can be installed from the [account settings page](/account) as shown below:
 
 <Image
 src={`${process.env.IMAGE_ASSETS_URL}/docs/now-for-github/github-connect.png`}
@@ -76,11 +54,27 @@ height={484/2}
 />
 <Caption>The Now for GitHub installation section within the account or team general settings page.</Caption>
 
+[Now for GitLab](/docs/v2/integrations/now-for-gitlab) can be installed from the [account settings page](/account) as shown below:
+
+<Image
+src={`${process.env.ASSETS}/docs/now-for-gitlab/gitlab-connect.png`}
+width={1448/2}
+height={484/2}
+/>
+<Caption>The Now for GitLab installation section within the account or team general settings page.</Caption>
+
 <Card
   title="Read Next: Now for GitHub"
   href="/docs/v2/integrations/now-for-github"
 >
   Automatically deploy and alias changes to repositories with Now for GitHub.
+</Card>
+
+<Card
+  title="Read Next: Now for GitLab"
+  href="/docs/v2/integrations/now-for-gitlab"
+>
+  Automatically deploy and alias changes to repositories with Now for GitLab.
 </Card>
 
 <Card title="Read Next: Deployment Basics" href="/docs/v2/deployments/basics">
