@@ -13,7 +13,7 @@ export const meta = {
   description:
     'Learning the basics of deploying any application with ZEIT Now.',
   editUrl: 'pages/docs/v2/deployments/basics.mdx',
-  lastEdited: '2019-07-15T18:40:25.000Z'
+  lastEdited: '2019-07-15T18:56:12.000Z'
 }
 
 A deployment represents a copy of your application hosted in our cloud platform, accessible to you and your users via HTTP/2.
@@ -49,7 +49,7 @@ Next, install the dependencies you are going to use for the frontend:
 <TerminalInput>yarn add next react react-dom</TerminalInput>
 <Caption>Installing Next.js, React, and React DOM as the project dependencies.</Caption>
 
-Use your text editor to create a `pages/index.js` file with the following contents:
+Create a `pages` directory, and then use your text editor to fill an `index.js` inside of that directory, with the following contents:
 
 ```js
 function Home() {
@@ -104,9 +104,9 @@ The power of Now does not stop at building and serving your frontend. Often, you
 
 Now supports building anything, using a dynamic language, within an `api` directory as [Serverless Lambdas](/docs/v2/deployments/concepts/lambdas). These are entry points that are invoked when requested (through accessing their URL path), execute code, and respond dynamically.
 
-Get started by creating a function that will be executed whenever the user goes to `/api/date.js`, which will then output the date.
+Get started by creating a function that will be executed whenever the user goes to `/api/date`, which will then output the date.
 
-Create a file `api/date.js` with the following contents:
+Create an `api` directory and then a `date.js` file inside of it with the following contents:
 
 ```js
 module.exports = (req, res) => {
@@ -167,7 +167,7 @@ export default Home
 
 ### Step 4: Deploy
 
-All we have to do now is run `now` from within the `my-app` directory:
+Using Now CLI, all you have to do now is run `now` from within the `my-app` directory root:
 
 <TerminalInput>now</TerminalInput>
 
@@ -191,6 +191,22 @@ Check the automatic staging alias for the deployment for a live example: <https:
 
 This URL is unique to the source code inside that directory. If you run `now` again, the same deployment is returned. This is why we call our deployments [immutable](/docs/v2/deployments/concepts/immutability).
 
+### Simplifying Deployment with Git
+
+Now also offers an easier method to deploy with integrations for both [GitHub](/docs/v2/integrations/now-for-github) and [GitLab](/docs/v2/integrations/now-for-github).
+
+These integrations, among many amazing features, deploy your projects automatically with each `git push`, and aliases them to your own domains or chosen name when merging to the default branch.
+
+Set up these integrations by following the links below to their individual documentation to benefit from automatic deployments and aliasing through your normal Git workflow:
+
+<Card title="Setup Now for GitHub" href="/docs/v2/integrations/now-for-github">
+  Setup Now for GitHub to get automatic deployments for your new projects.
+</Card>
+
+<Card
+  title="Setup Now for GitLab"
+  href="/docs/v2/integrations/now-for-gitlab"
+>Setup Now for GitLab to get automatic deployments for your new projects.</Card>
 ## Read More
 
 Next, add a domain and assign it as an alias to your new project:
