@@ -11,7 +11,7 @@ export const meta = {
   title: 'Frequently Asked Questions',
   description: 'Get answers to popular Now Development questions.',
   editUrl: 'pages/docs/v2/development/frequently-asked-questions.mdx',
-  lastEdited: '2019-07-12T10:56:04.000Z'
+  lastEdited: '2019-07-15T19:20:01.000Z'
 }
 
 This is a list of frequently asked questions related to local development with Now.
@@ -26,58 +26,21 @@ Questions can be found under their relevant section header.
 
 When you are developing a Next.js application for Now 2.0, the main objective with `now dev` is to imitate our cloud environment.
 
-With that in mind, a few additional steps are necessary before your application can be served in a [Serverless](/docs/v2/deployments/concepts/lambdas/) environment, including the execution of [Builders](/docs/v2/deployments/builders/overview) to optimize your code, proper handling of routes defined in your [`now.json`](/docs/v2/deployments/configuration/) and the loading of [environment variables](/docs/v2/development/environment-variables). `now dev` is a **single command development experience**.
-
-### Supported Builders
-
-##### Which Builders are supported in `now dev`?
-
-The following [Builders](/docs/v2/deployments/builders/overview) are currently supported for use within `now dev`:
-
-- [`@now/static`](/docs/v2/deployments/official-builders/static-now-static)
-- [`@now/static-build`](/docs/v2/deployments/official-builders/static-build-now-static-build/)
-- [`@now/node`](/docs/v2/deployments/official-builders/node-js-now-node/)
-- [`@now/node-server`](/docs/v2/deployments/official-builders/node-js-server-now-node-server/)
-- [`@now/next`](/docs/v2/deployments/official-builders/next-js-now-next/)
-- [`@now/go`](/docs/v2/deployments/official-builders/go-now-go/)
-- [`@now/python`](/docs/v2/deployments/official-builders/python-now-python/)
-- [`@now/bash`](/docs/v2/deployments/official-builders/bash-now-bash/)
-- [`@now/optipng`](/docs/v2/deployments/official-builders/optipng-now-optipng/)
-- [`@now/html-minifier`](/docs/v2/deployments/official-builders/html-minifier-now-html-minifier/)
-- [`@now/md`](/docs/v2/deployments/official-builders/markdown-now-md/)
-
-The following Builders are not yet supported but are being worked on and should be available soon:
-
-- [`@now/php`](/docs/v2/deployments/official-builders/php-now-php/)
-- [`@now/rust`](/docs/v2/deployments/official-builders/now-rust/)
-- [`@now/mdx-deck`](/docs/v2/deployments/official-builders/mdx-deck-now-mdx-deck/)
-
-### Third-party Builders
-
-##### Does `now dev` work with builders that are not in the official list?
-
-While we strongly recommend using our [Official Builders](/docs/v2/deployments/builders/overview), other Builders should work too.
-
-The Official Builders contain optimizations and features specifically aligned with the current release of `now dev`. If your specific use-case isn't working out, please don't hesitate to reach out to us on our [community chat](https://zeit.co/chat) — we'll try our best to help.
+With that in mind, a few additional steps are necessary before your application can be served in a [Serverless](/docs/v2/deployments/concepts/lambdas/) environment, `now dev` is a **single command development experience** that takes care of this for you.
 
 ### Upgrading
 
 ##### How do I upgrade to `now dev`?
 
-Get started by [downloading the Now CLI](/docs/v2/getting-started/installation/#now-cli) or [upgrade your existing installation](/guides/updating-now-cli/) to use `now dev`.
+Get started by [downloading Now CLI](/docs/v2/getting-started/installation/#now-cli) or [upgrade your existing installation](/guides/updating-now-cli/) to use `now dev`.
 
-We always recommend running the latest version of the Now CLI. This lets you take advantage of the newest features, stability and security enhancements. To download the Now CLI, visit our download page. To upgrade the Now CLI, [follow the instructions](/guides/updating-now-cli/) in the Upgrade section.
+We always recommend running the latest version of Now CLI. This lets you take advantage of the newest features, stability and security enhancements. To download Now CLI, visit our [download page](/download). To upgrade the Now CLI, [follow the instructions](/guides/updating-now-cli/) in the Upgrade section.
 
 ##### I've used Now 1.0 in the past, how do I start using `now dev`?
 
 We encourage you to [upgrade to Now 2.0](/guides/upgrade-to-2-0) in order to take advantage of `now dev`. Upgrading also allows you to enjoy new features, better performance and security, and lower pricing.
 
-Once complete, you can start refactoring your `now.json`. In Now 2.0 we've introduced 2 new configurations:
-
-- `builds`: This is responsible to translate your code into one or more lambdas or static assets. The documentation can be accessed [here](/docs/v2/deployments/configuration/#builds).
-- `routes`: By default, the filesystem is used as a router. You can manipulate that behavior with this configuration. The documentation can be accessed [here](/docs/v2/deployments/configuration/#routes).
-
-A look at our [examples](https://github.com/zeit/now-examples) is also recommended, since it is very likely that you can borrow a `now.json` and deploy your app quicker.
+You can start using `now dev` by upgrading to the latest Now CLI. After that, we recommend taking a look at our [examples](https://github.com/zeit/now-examples), this will help you understand the changes you need to make, **if any**, in order to fit a serverless model.
 
 ### Environment Variables and Secrets
 
@@ -97,7 +60,7 @@ Sometimes you need to execute a different code path when your application is run
 
 ##### Does `now dev` work for all types of projects?
 
-Yes! `now dev` works for all types of projects using the [Official Builders](/docs/v2/deployments/builders/overview) that can be deployed to [Now](http://now.sh).
+Yes! `now dev` works for all types of projects and supports the use of any backend language. You can find many examples in our [examples repository](https://github.com/zeit/now-examples).
 
 ### Developing Offline
 
