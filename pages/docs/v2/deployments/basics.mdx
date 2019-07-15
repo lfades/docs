@@ -12,7 +12,7 @@ export const meta = {
   description:
     'Learning the basics of deploying any application with ZEIT Now.',
   editUrl: 'pages/docs/v2/deployments/basics.mdx',
-  lastEdited: '2019-07-11T02:04:10.000Z'
+  lastEdited: '2019-07-15T14:50:54.000Z'
 }
 
 A deployment represents a copy of your application hosted in our cloud platform, accessible to you and your users via HTTP/2.
@@ -85,7 +85,6 @@ And register a [Build](/docs/v2/deployments/builds) for it by adding the followi
 
 ```json
 {
-  "version": 2,
   "builds": [{ "src": "date.js", "use": "@now/node" }]
 }
 ```
@@ -118,7 +117,6 @@ We can then use the `@now/static` build module to include our `index.html` file 
 
 ```json
 {
-  "version": 2,
   "builds": [
     { "src": "date.js", "use": "@now/node" },
     { "src": "index.html", "use": "@now/static" }

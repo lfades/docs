@@ -11,7 +11,7 @@ export const meta = {
   description:
     'Create proxies, redirects, cache-control headers, and more with Now routes, easily.',
   editUrl: 'pages/docs/v2/deployments/routes.mdx',
-  lastEdited: '2019-07-02T17:39:47.000Z'
+  lastEdited: '2019-07-15T14:50:54.000Z'
 }
 
 Now uses routes to define the behavior of how a request is handled on the routing side. For example, you might use a route to proxy a URL to another, redirect a client, or apply a header with the response to a request.
@@ -22,7 +22,6 @@ A route can be defined within a project's [`now.json` configuration file](/docs/
 
 ```json
 {
-  "version": 2,
   "routes": [{ "src": "/about", "dest": "/about.html" }]
 }
 ```
@@ -47,7 +46,6 @@ The following example shows a `now.json` configuration that takes a `src` path a
 
 ```json
 {
-  "version": 2,
   "routes": [{ "src": "/about", "dest": "/about.html" }]
 }
 ```
@@ -68,7 +66,6 @@ The following example shows a `now.json` configuration that takes a `src` path a
 
 ```json
 {
-  "version": 2,
   "routes": [
     { "src": "/about", "dest": "https://about.me" },
     { "src": "/action", "dest": "my-lambda-action/index" }
@@ -90,7 +87,6 @@ The following example shows a `now.json` configuration that takes a `src` path a
 
 ```json
 {
-  "version": 2,
   "routes": [{ "src": "/about" }]
 }
 ```
@@ -111,7 +107,6 @@ An example of using the `headers` property to add [shared caching](https://devel
 
 ```json
 {
-  "version": 2,
   "routes": [
     {
       "src": "/images/(.*)",
@@ -142,7 +137,6 @@ For example, you can use this property in combination with [the `headers` proper
 
 ```json
 {
-  "version": 2,
   "routes": [
     {
       "src": "/blog.*",
@@ -172,7 +166,6 @@ For example, you can use this property in combination with [the `headers` proper
 
 ```json
 {
-  "version": 2,
   "routes": [
     {
       "src": "/about.html",
@@ -215,7 +208,6 @@ As an example, you can use this property when you have an API endpoint and only 
 
 ```json
 {
-  "version": 2,
   "routes": [
     {
       "src": "/api/user.js",
@@ -255,7 +247,6 @@ For example, if you are using URL parameters but want to use a custom URL path y
 
 ```json
 {
-  "version": 2,
   "routes": [{ "src": "/product/(?<id>[^/]+)", "dest": "/product?id=$id" }]
 }
 ```
@@ -278,7 +269,6 @@ As another example, if you want to redirect from all paths under a certain direc
 
 ```json
 {
-  "version": 2,
   "routes": [
     {
       "src": "/posts/(.*)",
@@ -309,7 +299,6 @@ Sometimes, you will have wildcard routes that overlap with other routes. For exa
 
 ```json
 {
-  "version": 2,
   "routes": [
     { "src": "/about" },
     { "src": "/contact" },
@@ -327,7 +316,6 @@ You might find that there are many routes without a `dest`. These routes can be 
 
 ```json
 {
-  "version": 2,
   "routes": [
     { "handle": "filesystem" },
     { "src": "/([^/]+)", "dest": "/blog?slug=$1" }
@@ -354,7 +342,6 @@ Routes are applied in the order they are given in the `routes` array. Take the f
 
 ```json
 {
-  ...
   "routes": [
     { "src": "/(.*)", "dest": "/" },
     { "src": "/first-page", "dest": "/first-page.html" }
@@ -374,7 +361,6 @@ The correct configuration for all routes to take affect would be:
 
 ```json
 {
-  ...
   "routes": [
     { "src": "/first-page", "dest": "/first-page.html" },
     { "src": "/(.*)", "dest": "/" }
