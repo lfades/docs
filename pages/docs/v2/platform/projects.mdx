@@ -12,7 +12,7 @@ export const meta = {
   title: 'Projects',
   description: 'Setting up projects with a list of deployments on ZEIT Now.',
   editUrl: 'pages/docs/v2/platform/projects.mdx',
-  lastEdited: '2019-02-07T23:32:31.000Z'
+  lastEdited: '2019-07-15T14:20:50.000Z'
 }
 
 A project is a logical structure that groups deployments and aliases inside of an account or team, based on the name of the project. This structure allows easier tracking and managing of deployments.
@@ -79,27 +79,7 @@ Use the `--name` option to mention the project name as follows:
 <TerminalInput>{`now --name <your-project-name>`}</TerminalInput>
 <Caption>Deploying the current directory with Now CLI and <InlineCode>--name</InlineCode> option.</Caption>
 
-### 2. Select the Project via `now.json`
-
-You can specify the project for your deployment by using [the `name` property](/docs/v2/deployments/configuration#name) of the `now.json`
-
-```json
-{
-  "name": "<your-project-name>",
-  "version": 2
-}
-```
-
-<Caption>
-  An example <InlineCode>now.json</InlineCode> file defining a name of a project
-  and the{' '}
-  <GenericLink href="/docs/v2/platform/overview#versioning">
-    platform version
-  </GenericLink>
-  .
-</Caption>
-
-### 3. Automatic Project Selection
+### 2. Automatic Project Selection
 
 If you didn't specify a project name explicitly via one of the above methods, we try to select a project automatically based on following rules:
 
