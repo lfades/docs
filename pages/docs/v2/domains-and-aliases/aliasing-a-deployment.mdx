@@ -19,7 +19,7 @@ export const meta = {
   description:
     'All you need to know about assigning a name to your ZEIT Now deployments',
   editUrl: 'pages/docs/v2/domains-and-aliases/aliasing-a-deployment.mdx',
-  lastEdited: '2019-04-13T00:31:19.000Z'
+  lastEdited: '2019-07-15T17:21:40.000Z'
 }
 
 When deploying a [project](/docs/v2/platform/projects/), whether ready for staging or production, you will want a URL to share the project with others or for yourself to check on other devices.
@@ -31,13 +31,27 @@ There are two ways to create an alias with Now:
 - [Deployment Environments](#deployment-environments), automatic aliases based on the deployment environment.
 - [Manual Aliasing](#manual-aliasing), alias to a specific URL, manually.
 
+## Adding Aliases
+
+If you want to use a specific domain with your project, you must add an alias to the project from the **Domains** section of the project dashboard.
+
+To do this, select the project from the dashboard and click the **Domains** tab. Here you will find two options representing different deployment environments, **Staging** and **Production**. Choose the environment for your desired alias and enter the alias, for example, `timothy.now.sh`, into the input box.
+
+If the domain is **registered to your account and available for use**, this will be indicated below the input box.
+
+If the domain is **not registered to your account**, it will automatically be added and we will attempt to verify it for you.
+
+<Note hint>You can add as many aliases to a project as you require.</Note>
+
+Once the alias has been added, the interface will update to reflect this along with further information such as instructions on how to use it, this will be explored further later on in this document.
+
 ## Deployment Environments
 
 When making a deployment, you can choose whether to push that deployment [to production](#production) or to [a staging URL](#staging).
 
 ### Staging
 
-Every new deployment, whether it is from Now CLI, Now for GitHub, or Now for GitLab, will receive both a unique deployment URL and a staging alias for the deployment that updates with every deployment you personally make from the project.
+Every new deployment, whether it is from [Now CLI](/download), [Now for GitHub](/docs/v2/integrations/now-for-github), or [Now for GitLab](/docs/v2/integrations/now-for-gitlab), will receive both a unique deployment URL and a staging alias for the deployment that updates with every deployment you personally make from the project.
 
 The staging alias can be formatted in multiple ways, depending on where it came from.
 
@@ -50,7 +64,7 @@ These staging aliases include:
 
 #### Personal Project Staging Aliases
 
-For **deployments made from a personal account** with Now CLI, you will get a staging alias like the following:
+For **deployments made from a personal account** with [Now CLI](/download), you will get a staging alias like the following:
 
 <Image src={`${process.env.ASSETS}/docs/domains-and-aliases/aliasing-a-deployment/personal-staging-alias.png`}
 width={1200/2}
@@ -75,6 +89,10 @@ height={320/2}
 In the above example, each deployment from the team scope `my-team` by a team member with the username `timothy` to the `my-app` [project](/docs/v2/platform/projects/) will result in an update with the latest app to the staging alias URL `my-app-timothy.my-team.now.sh`.
 
 This default alias is helpful when you want to share the URL containing the latest changes of a single team member for a project that automatically updates with each new deployment.
+
+<Card title="Switching Scope" href="/docs/v2/platform/users-and-teams#now-cli">
+  Learn how to switch between scopes using Now CLI.
+</Card>
 
 #### Staging Environment Aliases for a Team's Project
 
@@ -108,23 +126,6 @@ If the non-default branch belongs to a repository connected to a [personal Now u
 
 ### Production
 
-The production alias is a custom defined production environment, configured using [the `alias` property of a `now.json` file](/docs/v2/deployments/configuration#alias).
-
-```json
-{
-  "version": 2,
-  "alias": "my-zeit-domain.live"
-}
-```
-
-<Caption>
-  An example <InlineCode>now.json</InlineCode> file configuring the{' '}
-  <GenericLink href="/docs/v2/platform/overview/#versioning">
-    Now platform version
-  </GenericLink>{' '}
-  and a production alias.
-</Caption>
-
 Triggering a deployment to a production alias can be done with either [Now CLI](#with-now-cli) or automatically with [a Now for Git integration](#with-now-for-git).
 
 <Note>
@@ -138,13 +139,13 @@ Triggering a deployment to a production alias can be done with either [Now CLI](
 
 #### With Now CLI
 
-Deploying with the following command will trigger a deployment to the production alias defined in the `now.json` file:
+Deploying with the following command will trigger a deployment to the production alias defined in the projects **Domains** dashboard:
 
 <TerminalInput>now --target production</TerminalInput>
 
 #### With Now for Git
 
-Each push to the default branch with either [Now for GitHub](/docs/v2/integrations/now-for-github) or [Now for GitLab](/docs/v2/integrations/now-for-gitlab), will result in aliasing a fresh deployment to the production alias, set in your `now.json` file.
+Each push to the default branch with either [Now for GitHub](/docs/v2/integrations/now-for-github) or [Now for GitLab](/docs/v2/integrations/now-for-gitlab), will result in aliasing a fresh deployment to the production alias, defined in the projects **Domains** dashboard.
 
 ## Manual Aliasing
 
