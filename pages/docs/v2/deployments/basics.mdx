@@ -6,13 +6,14 @@ import { InlineCode } from '~/components/text/code'
 import { Image } from '~/components/media'
 import Caption from '~/components/text/caption'
 import Card from '~/components/card'
+import Note from '~/components/text/note'
 
 export const meta = {
   title: 'Deployment Basics',
   description:
     'Learning the basics of deploying any application with ZEIT Now.',
   editUrl: 'pages/docs/v2/deployments/basics.mdx',
-  lastEdited: '2019-07-15T14:50:54.000Z'
+  lastEdited: '2019-07-15T18:06:10.000Z'
 }
 
 A deployment represents a copy of your application hosted in our cloud platform, accessible to you and your users via HTTP/2.
@@ -21,8 +22,8 @@ The deployment process gets triggered by either an [API call](/docs/api), the `n
 
 The deployment process involves two phases we handle on your behalf:
 
-- Source code synchronization: we take your application sources and upload them
-- Build steps execution: if you define build steps, we execute them and serve their outputs
+- Source code synchronization: we take your application sources and upload them, or synchronize source files that have not changed from previous deployments.
+- Build steps execution: dependent on the filetypes available and your project setup, we detect your project and build it into outputs, ready to serve.
 
 The resulting deployment is:
 
@@ -30,20 +31,131 @@ The resulting deployment is:
 - [Globally Distributed](/smart-cdn)
 - [Serverless](/docs/v2/deployments/concepts/lambdas/#conceptual-model)
 
-### Your First Deployment
+## Your First Deployment
 
-To make your first deployment, we are going to use the [Now CLI](/docs/v2/getting-started/installation#now-cli). If you have not installed it yet, please refer to the [installation instructions](/docs/v2/getting-started/installation) (otherwise, run `npm i -g now` if Node.js is installed).
+The following will take you through creating your first project using Next.js and a single Node.js endpoint, then deploying it with ZEIT Now without any additional configuration.
 
-We start by creating a directory in which to place our deployment sources. Open up [a terminal](https://hyper.is) and write the following:
+To develop and deploy, you are going to use the [Now CLI](/docs/v2/getting-started/installation#now-cli). If you have not installed it yet, please refer to the [installation instructions](/docs/v2/getting-started/installation).
+
+### Create a Project
+
+Start by creating a directory for your new project. Open up [your terminal](https://hyper.is) and use the following:
 
 <TerminalInput>mkdir -p my-app && cd my-app</TerminalInput>
+<Caption>Creating and moving into the <InlineCode>my-app</InlineCode> directory.</Caption>
 
-We are now inside the `my-app` directory. Use your favorite text editor to create an `index.html` file with the following contents:
+Next, install the dependencies you are going to use for the frontend:
 
-```html
-<h1>Hello World</h1>
-<marquee>This is my first Now Deployment</marquee>
+<TerminalInput>yarn add next react react-dom</TerminalInput>
+<Caption>Installing Next.js, React, and React DOM as the project dependencies.</Caption>
+
+Use your text editor to create a `pages/index.js` file with the following contents:
+
+```js
+function Home() {
+  return (
+    <main>
+      <h1>Welcome to my website</h1>
+      <p>Deployed with ZEIT Now!</p>
+      <p>{date ? date : 'Loading date...'}</p>
+    </main>
+  )
+}
+
+export default Home
 ```
+
+To have this Next.js app build fresh with every deployment, you will want to add a build script to your `package.json` file (created when installing the dependencies):
+
+```json
+{
+  "scripts": {
+    "build": "next build"
+  },
+  "dependencies": {...}
+}
+```
+
+<Caption>
+  An example <InlineCode>package.json</InlineCode> with a{' '}
+  <InlineCode>scripts</InlineCode> object used to build Next.js for deployment.
+</Caption>
+
+### Local Development
+
+Now you have a deployment-ready Next.js page, try creating a local development environment using the following command from your terminal (within the project's root directory):
+
+<TerminalInput>now dev</TerminalInput>
+<Caption>Using Now CLI to create a development environment that replicates the live deployment environment.</Caption>
+
+<Image
+  src={`${process.env.ASSETS}/docs/getting-started/deploying/now-dev.png`}
+  width={1526/2}
+  height={824/2}
+/>
+<Caption>A local development server, started with <GenericLink href="/docs/v2/getting-started/installation#now-cli">Now CLI</GenericLink>.</Caption>
+
+### Add an API
+
+The power of Now does not stop at building and serving your frontend. Often, you will want to introduce data to your project and there is no better way to do that than your own API.
+
+Now supports building anything, using a dynamic language, within an `api` directory as [Serverless Lambdas](/docs/v2/deployments/concepts/lambdas). These are entry points that are invoked when requested (through accessing their URL path), execute code, and respond dynamically.
+
+Get started by creating a function that will be executed whenever the user goes to `/api/date.js`, which will then output the date.
+
+Create a file `api/date.js` with the following contents:
+
+```js
+module.exports = (req, res) => {
+  const date = new Date().toString()
+  res.status(200).send(date)
+}
+```
+
+Using `now dev`, like in [Local Development](#local-development), go to [localhost:3000/api/date](http://localhost:3000/api/date) (unless you were assigned another port due to 3000 being in use, then use that port) and you will see your dynamic date response.
+
+<Note>
+  Now automatically ommits the filetype when accessing your API endpoint so you
+  don't have to worry about it.
+</Note>
+
+<Image
+  src={`${process.env.ASSETS}/docs/getting-started/deploying/api-response.png`}
+  width={1528/2}
+  height={904/2}
+/>
+<Caption>The new API endpoint showing the date and time from the local development environment.</Caption>
+
+Going one step further, you can even link your frontend to your API and show the latest date when your frontend loads. Change your `pages/index.js` page to the following to make use of your new API:
+
+```js
+import { useEffect, useState } from 'react'
+
+function Home() {
+  const [date, setDate] = useState(null)
+
+  useEffect(() => {
+    async function getDate() {
+      const res = await fetch('/api/date')
+      const newDate = await res.text()
+      setDate(newDate)
+    }
+    getDate()
+  }, [])
+
+  return (
+    <main>
+      <h1>Welcome to my website</h1>
+      <p>Deployed with ZEIT Now!</p>
+      <p>{date ? date : 'Loading date...'}</p>
+    </main>
+  )
+}
+
+export default Home
+```
+
+### Deploy
 
 All we have to do now is run `now` from within the `my-app` directory:
 
@@ -52,102 +164,33 @@ All we have to do now is run `now` from within the `my-app` directory:
 The output looks like the following and includes a deployment URL:
 
 <Image
-  src={`https://assets.zeit.co/image/upload/v1541628789/front/docs/deployments-basics/basic-deployment-index.png`}
-  width={1394/2}
-  height={762/2}
+  src={`${process.env.ASSETS}/docs/getting-started/deploying/terminal-deploy.png`}
+  width={1526/2}
+  height={984/2}
 />
-<Caption>The output of deploying a simple application with <GenericLink href="/docs/v2/getting-started/installation#now-cli">Now CLI</GenericLink></Caption>
+<Caption>The output of deploying a project with <GenericLink href="/docs/v2/getting-started/installation#now-cli">Now CLI</GenericLink>.</Caption>
 
-Check the deployment for a live example: <https://my-app-prtypks27.now.sh/>
+Check the automatic staging alias for the deployment for a live example: <https://my-app-timothy.now-examples.now.sh/>
+
+<Image
+  src={`${process.env.ASSETS}/docs/getting-started/deploying/deployed.png`}
+  width={1528/2}
+  height={904/2}
+/>
+<Caption>The output of deploying a project with <GenericLink href="/docs/v2/getting-started/installation#now-cli">Now CLI</GenericLink>.</Caption>
 
 This URL is unique to the source code inside that directory. If you run `now` again, the same deployment is returned. This is why we call our deployments [immutable](/docs/v2/deployments/concepts/immutability).
 
-### Introducing a Build Step
-
-When we created our deployment above, Now performed one phase: source code synchronization.
-
-In most production applications, however, we typically want to transform sources into other outputs. Now supports two types of outputs:
-
-- Other static files. For example, we can take `index.html` and minify it or optimize a PNG
-- [Lambdas](/docs/v2/deployments/concepts/lambdas) (Serverless). These are entry points that are invoked when requested, execute code and respond dynamically.
-
-Let's add a function that will be executed whenever the user goes to `/date.js` that outputs the date.
-
-Create a file `date.js` with the following contents:
-
-```js
-module.exports = (req, res) => {
-  res.end(`The date is ${Date.now()}`)
-}
-```
-
-And register a [Build](/docs/v2/deployments/builds) for it by adding the following to `now.json`:
-
-```json
-{
-  "builds": [{ "src": "date.js", "use": "@now/node" }]
-}
-```
-
-When we run `now`, the output will look as follows:
-
-<Image
-  src={`https://assets.zeit.co/image/upload/v1541628788/front/docs/deployments-basics/basic-deployment-build.png`}
-  width={1394/2}
-  height={762/2}
-/>
-<Caption>The output of deploying a simple application including a build step with <GenericLink href="/docs/v2/getting-started/installation#now-cli">Now CLI</GenericLink></Caption>
-
-If we go to <https://my-app-83iw09a84.now.sh/date.js> we will get dynamic output.
-
-Interestingly, if we go to <https://my-app-83iw09a84.now.sh> (the root path), you will find that our `index.html` file is not showing, and instead we get a [**directory listing**](/docs/v2/network/directory-listing):
-
-<Image
-src={`https://assets.zeit.co/image/upload/v1541629369/front/docs/deployments-basics/basic-deployment-listing.png`}
-width={1456/2}
-height={880/2}
-/>
-<Caption>The directory listing of our deployment, showing <InlineCode>date.js</InlineCode>.</Caption>
-
-It is important to understand that Now keeps track of [**sources and outputs**](/docs/v2/deployments/builds#sources-and-outputs). If you add the [special pathname](/docs/v2/deployments/concepts/special-paths) `/_src` at the end of the deployment, you will be able to inspect them.
-
-Notice that in the source view, in the output tab, a `date.js` lambda was built (identified with the icon λ), but `index.html` is no longer present. This is a precaution Now takes when using Builds to prevent source files from being accidentally exposed to the outside world.
-
-We can then use the `@now/static` build module to include our `index.html` file explicitly:
-
-```json
-{
-  "builds": [
-    { "src": "date.js", "use": "@now/node" },
-    { "src": "index.html", "use": "@now/static" }
-  ]
-}
-```
-
-When we run `now` again, we will see all our outputs.
-
-<Image
-  src={`https://assets.zeit.co/image/upload/v1541628788/front/docs/deployments-basics/basic-deployment-builds.png`}
-  width={1394/2}
-  height={762/2}
-/>
-<Caption>The output of deploying a simple application including multiple build steps with <GenericLink href="/docs/v2/getting-started/installation#now-cli">Now CLI</GenericLink></Caption>
-
-The end result is on display at <https://my-app-4t1xyg9f7.now.sh>, including the `date.js` Lambda: <https://my-app-4t1xyg9f7.now.sh/date.js>
-
 ## Read More
 
-Extend your deployments with all that Now offers:
+Next, add a domain and assign it as an alias to your new project:
 
 <Card
-  title="Extending Now Deployments with Builds"
-  href="/docs/v2/deployments/builds"
+  title="Introduction to Domains and Aliases"
+  href="/docs/v2/domains-and-aliases/introduction"
 >
-  Builds on Now create a production-ready output from your source files.
-</Card>
-
-<Card title="Control Your Paths with Routes" href="/docs/v2/deployments/routes">
-  Control your deployment's paths in detail with routes.
+  Add a domain and assign it to a deployment for others to access it through a
+  memorable name.
 </Card>
 
 export default withAmp(({ children }) => <Doc meta={meta}>{children}</Doc>, {
