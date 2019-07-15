@@ -13,7 +13,7 @@ export const meta = {
   description:
     'Learning the basics of deploying any application with ZEIT Now.',
   editUrl: 'pages/docs/v2/deployments/basics.mdx',
-  lastEdited: '2019-07-15T18:09:46.000Z'
+  lastEdited: '2019-07-15T18:40:25.000Z'
 }
 
 A deployment represents a copy of your application hosted in our cloud platform, accessible to you and your users via HTTP/2.
@@ -33,15 +33,15 @@ The resulting deployment is:
 
 ## Your First Deployment
 
-The following will take you through creating your first project using Next.js and a single Node.js endpoint, then deploying it with ZEIT Now without any additional configuration.
+In just a few steps, learn how to create your first project using Next.js and a single Node.js endpoint, then deploy it with ZEIT Now without any additional configuration.
 
-To develop and deploy, you are going to use the [Now CLI](/docs/v2/getting-started/installation#now-cli). If you have not installed it yet, please refer to the [installation instructions](/docs/v2/getting-started/installation).
+The following steps use [Now CLI](/docs/v2/getting-started/installation#now-cli) for an integrated development environment and deployment commands. If you have not installed it yet, please refer to the [installation instructions](/docs/v2/getting-started/installation).
 
-### Create a Project
+### Step 1: Create a Project
 
-Start by creating a directory for your new project. Open up [your terminal](https://hyper.is) and use the following:
+Start by creating a directory for your new project. Open up [your terminal](https://hyper.is) and use the following command:
 
-<TerminalInput>mkdir -p my-app && cd my-app</TerminalInput>
+<TerminalInput>mkdir my-app && cd my-app</TerminalInput>
 <Caption>Creating and moving into the <InlineCode>my-app</InlineCode> directory.</Caption>
 
 Next, install the dependencies you are going to use for the frontend:
@@ -65,12 +65,15 @@ function Home() {
 export default Home
 ```
 
-To have this Next.js app build fresh with every deployment, you will want to add a build script to your `package.json` file (created when installing the dependencies):
+<Caption>A small example Next.js Index page.</Caption>
+
+To have this Next.js app build fresh with every deployment, and for the app to run using the Next.js module in development, add the following script to your `package.json` file (created when installing the dependencies):
 
 ```json
 {
   "scripts": {
-    "build": "next build"
+    "build": "next build",
+    "dev": "next"
   },
   "dependencies": {...}
 }
@@ -81,7 +84,7 @@ To have this Next.js app build fresh with every deployment, you will want to add
   <InlineCode>scripts</InlineCode> object used to build Next.js for deployment.
 </Caption>
 
-### Local Development
+### Step 2: Local Development
 
 Now you have a deployment-ready Next.js page, try creating a local development environment using the following command from your terminal (within the project's root directory):
 
@@ -95,9 +98,9 @@ Now you have a deployment-ready Next.js page, try creating a local development e
 />
 <Caption>A local development server, started with <GenericLink href="/docs/v2/getting-started/installation#now-cli">Now CLI</GenericLink>.</Caption>
 
-### Add an API
+### Step 3: Add an API
 
-The power of Now does not stop at building and serving your frontend. Often, you will want to introduce data to your project and there is no better way to do that than your own API.
+The power of Now does not stop at building and serving your frontend. Often, you will want to introduce data to your project, and there is no better way to do that than with your own API.
 
 Now supports building anything, using a dynamic language, within an `api` directory as [Serverless Lambdas](/docs/v2/deployments/concepts/lambdas). These are entry points that are invoked when requested (through accessing their URL path), execute code, and respond dynamically.
 
@@ -111,6 +114,8 @@ module.exports = (req, res) => {
   res.status(200).send(date)
 }
 ```
+
+<Caption>A Node.js API endpoint to return the current date and time.</Caption>
 
 Using `now dev`, like in [Local Development](#local-development), go to [localhost:3000/api/date](http://localhost:3000/api/date) (unless you were assigned another port due to 3000 being in use, then use that port) and you will see your dynamic date response.
 
@@ -155,7 +160,12 @@ function Home() {
 export default Home
 ```
 
-### Deploy
+<Caption>
+  Extending the initial Next.js page with a function to get the date from your
+  API.
+</Caption>
+
+### Step 4: Deploy
 
 All we have to do now is run `now` from within the `my-app` directory:
 
