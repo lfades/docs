@@ -14,7 +14,7 @@ export const meta = {
   description:
     'Deploy each change in your GitLab projects with Now to share and test with your colleagues. Instant share-able links to your work with each push. Automatically alias your changes to production.',
   editUrl: 'pages/docs/v2/integrations/now-for-gitlab.mdx',
-  lastEdited: '2019-03-19T01:00:01.000Z'
+  lastEdited: '2019-07-15T13:47:23.000Z'
 }
 
 The Now for GitLab integration automatically deploys and aliases your GitLab projects with [Now](/now).
@@ -77,31 +77,17 @@ Alternatively; if you do not already have a Now account, you can sign up to ZEIT
 />
 <Caption>Login to ZEIT with GitLab.</Caption>
 
-## Usage
-
-Once you link a GitLab project, we will deploy every git-push related to that project. If there is no [`now.json` file](/docs/v2/deployments/configuration) within the project, we will deploy the project statically.
-
-Using [a `now.json` file](/docs/v2/deployments/configuration), you can configure your projects to deploy as [dynamic serverless functions](/docs/v2/deployments/concepts/lambdas).
-
 ## Default Behavior
 
 ### A Deployment for Each Push
 
-Now for GitLab will **deploy each push by default**. This includes pushes to any branch and any merge requests made from those branches. This allows those working within the project to preview the changes made before they are pushed to production.
+Now for GitLab will **deploy each push by default**. This includes pushes and pull requests made to branches. This allows those working within the project to preview the changes made before they are pushed to production.
 
-With every push, if Now is already building a previous commit, it will cancel that current build to start the most recent commit, ensuring you always have the latest changes deployed as quickly as possible.
+With each new push, if Now is already building a previous commit, it will cancel that current build to start the most recent commit, ensuring you always have the latest changes deployed as quickly as possible.
 
 ### Aliasing the Default Branch
 
-If [an alias is set within the `now.json` file](/docs/v2/domains-and-aliases/aliasing-a-deployment), pushes and merges to the [default branch](https://docs.gitlab.com/ee/user/project/repository/branches/#default-branch) (commonly "master") will be [aliased automatically](/docs/v2/domains-and-aliases/aliasing-a-deployment) and made live to those defined aliases with the latest deployment made with a push.
-
-For example, the following [`now.json` configuration](/docs/v2/deployments/configuration) will make Now for GitLab alias the most recent push to `my-zeit-website.com` by default.
-
-```json
-{
-  "alias": ["my-zeit-website.com"]
-}
-```
+If an alias is set from the project domains dashboard, pushes and merges to the [default branch](https://docs.gitlab.com/ee/user/project/repository/branches/#default-branch) (commonly "master") will be [aliased automatically](/docs/v2/domains-and-aliases/aliasing-a-deployment) and made live to those aliases with the latest deployment made with a push.
 
 If you decide to revert a commit that has already been aliased, the previous commit's deployment will automatically be aliased instantly; providing you with instant rollbacks.
 
