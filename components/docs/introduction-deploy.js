@@ -709,7 +709,7 @@ export class Editor extends React.PureComponent {
             margin-bottom: -30px;
             margin-right: -30px;
             padding-bottom: 30px;
-            height: 358px;
+            height: 195px;
             outline: none; /* Prevent dragging from highlighting the element */
             position: relative;
           }
@@ -942,7 +942,7 @@ export class Editor extends React.PureComponent {
             color: #999999;
             display: flex;
             font-size: 14px;
-            height: 413px;
+            height: 250px;
             justify-content: center;
           }
 
