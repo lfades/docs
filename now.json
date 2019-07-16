@@ -108,6 +108,16 @@
       "status": 301,
       "headers": { "Location": "/examples/express" }
     },
+    {
+      "src": "/docs/v2/deployments/builders/(.*)/?",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/advanced/builders/$1" }
+    },
+    {
+      "src": "/docs/v2/deployments/official-builders/(.*)/?",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/advanced/builders/$1" }
+    },
     { "src": "(.*)", "dest": "$1" }
   ]
 }
