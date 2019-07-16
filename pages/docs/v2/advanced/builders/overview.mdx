@@ -11,7 +11,7 @@ export const meta = {
   description:
     'A look at what Builders are and how they are used with ZEIT Now deployment Builds to achieve production-ready outputs.',
   editUrl: 'pages/docs/v2/advanced/builders/overview.mdx',
-  lastEdited: '2019-07-16T12:01:51.000Z'
+  lastEdited: '2019-07-16T12:06:01.000Z'
 }
 
 Builders are [modules](https://zeit.co/docs/v2/deployments/builders/developer-guide/) that transform your [source code into the outputs](/docs/v2/deployments/builds#sources-and-outputs), being either static files and/or [lambdas](https://zeit.co/docs/v2/deployments/concepts/lambdas/), which are served by our [CDN at the edge](https://zeit.co/docs/v2/domains-and-aliases/cdn/).
@@ -119,6 +119,26 @@ In some cases, you may wish to include templates or views that are not able to b
     .
   </Caption>
 </Example>
+
+## Official Builders
+
+Listed below are all official Builders from ZEIT.
+
+| Builder                                                                                 | Description                                                                                                                                                                     |
+| --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Static](/docs/v2/deployments/official-builders/static-now-static)                      | The Static Builder takes any file as an entrypoint and moves it to the deployment as a static file.                                                                             |
+| [Static Builds](/docs/v2/deployments/official-builders/static-build-now-static-build)   | The Static Builds Builder takes a `package.json` or `build.sh` file as an entrypoint and executes a command within them to produce static files in a `dist` directory to serve. |
+| [Node.js](/docs/v2/deployments/official-builders/node-js-now-node)                      | The Node.js Builder takes an entrypoint of a Node.js function, builds its dependencies (if any) and bundles them into a Lambda.                                                 |
+| [Next.js](/docs/v2/deployments/official-builders/next-js-now-next)                      | The Next.js Builder takes a Next.js application, defined by a next.config.js entrypoint and pages directory, and converts those pages into a series of individual lambdas.      |
+| [Go](/docs/v2/deployments/official-builders/go-now-go)                                  | The Go Builder takes in a Go program that defines a singular HTTP handler and outputs it as a Lambda.                                                                           |
+| [PHP](/docs/v2/deployments/official-builders/php-now-php)                               | The PHP Builder takes `.php` files as an entrypoint and makes them available as Lambdas.                                                                                        |
+| [Python](/docs/v2/deployments/official-builders/python-now-python)                      | The Python Builder takes in a Python program that defines a singular HTTP handler and outputs it as a Lambda.                                                                   |
+| [Rust](/docs/v2/deployments/official-builders/now-rust)                                 | This Builder takes in a Rust program and outputs it as a Lambda.                                                                                                                |
+| [Bash](/docs/v2/deployments/official-builders/bash-now-bash)                            | The Bash Builder takes an entrypoint of a bash function, imports its dependencies, and bundles them into a Lambda.                                                              |
+| [mdx-deck](/docs/v2/deployments/official-builders/mdx-deck-now-mdx-deck)                | The mdx-deck Builder takes an `.mdx` file as an entrypoint and builds it as an mdx-deck output.                                                                                 |
+| [OptiPNG](/docs/v2/deployments/official-builders/optipng-now-optipng)                   | The OptiPNG Builder optimizes `.png` entrypoints using OptiPNG.                                                                                                                 |
+| [HTML Minifier](/docs/v2/deployments/official-builders/html-minifier-now-html-minifier) | The HTML Minifier Builder optimizes `.html` entrypoints using html-minifier.                                                                                                    |
+| [Markdown](/docs/v2/deployments/official-builders/markdown-now-md)                      | The Markdown Builder converts Markdown to output HTML files.                                                                                                                    |
 
 export default withAmp(({ children }) => <Doc meta={meta}>{children}</Doc>, {
   hybrid: true
