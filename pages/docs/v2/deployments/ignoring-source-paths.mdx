@@ -12,7 +12,7 @@ export const meta = {
   description:
     'Using a .nowignore file to prevent deploying source paths for speed and security.',
   editUrl: 'pages/docs/v2/deployments/ignoring-source-paths.mdx',
-  lastEdited: '2019-07-15T12:38:07.000Z'
+  lastEdited: '2019-07-17T12:53:43.000Z'
 }
 
 We highly recommend including the `.nowignore` file in your Now deployment. It is essential in uploading only the required paths to Now, increasing the speed of the initial deployment process.
@@ -92,17 +92,10 @@ CVS
 
 ## Read More
 
-See the documentation on **Deployment Basics**, **Builds** and **Builders** to learn more:
+See the documentation on **Deployment Basics** to learn more:
 
 <Card title="Deployment Basics" href="/docs/v2/deployments/basics">
   Deploy any of your applications with ZEIT Now.
-</Card>
-
-<Card title="Builds" href="/docs/v2/deployments/builds">
-  Transform sources into production ready outputs with builds.
-</Card>
-<Card title="Builders" href="/docs/v2/deployments/builders/overview">
-  Choose from a range of existing builders or make your own.
 </Card>
 
 export default withAmp(({ children }) => <Doc meta={meta}>{children}</Doc>, {
