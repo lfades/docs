@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useAmp } from 'next/amp'
-import { withRouter } from 'next/router'
 import Head from '~/components/layout/head'
 import { InstantSearch, Configure } from 'react-instantsearch-dom'
 import getAlgoliaClient from '~/lib/get-algolia'
@@ -28,7 +27,7 @@ import * as metrics from '~/lib/metrics'
 
 const searchClient = getAlgoliaClient()
 
-function Landing({ router }) {
+function Landing() {
   const [searchState, setSearchState] = useState({})
 
   const handleClickedCTA = e => {
@@ -214,16 +213,20 @@ function Landing({ router }) {
           <section className="docs-navigation-section">
             <Wrapper>
               <div className="docs-navigation-wrapper">
-                {data.map(d => (
-                  <div className="docs-navigation-category" key={d.name}>
-                    <H5>{d.name}</H5>
-                    {d.posts.map(p => (
-                      <GenericLink href={p.href || p.overview} key={p.name}>
-                        {p.name}
-                      </GenericLink>
-                    ))}
-                  </div>
-                ))}
+                {data.map(
+                  d =>
+                    d.posts &&
+                    d.highlightCategory && (
+                      <div className="docs-navigation-category" key={d.name}>
+                        <H5>{d.name}</H5>
+                        {d.posts.map(p => (
+                          <GenericLink href={p.href || p.overview} key={p.name}>
+                            {p.name}
+                          </GenericLink>
+                        ))}
+                      </div>
+                    )
+                )}
               </div>
             </Wrapper>
           </section>
@@ -623,4 +626,4 @@ function Landing({ router }) {
   )
 }
 
-export default withRouter(Landing)
+export default Landing

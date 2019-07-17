@@ -62,9 +62,11 @@ function Category({ info, level = 1, ...props }) {
 
   return (
     <div
-      className={`category ${levelClass} ${toggle ? 'open' : ''} ${
-        categorySelected ? 'selected' : ''
-      }`}
+      className={cn('category', levelClass, {
+        open: toggle,
+        selected: categorySelected,
+        separated: info.sidebarSeparator
+      })}
       key={info.name || ''}
     >
       <a className="label" onClick={onClick}>
@@ -132,6 +134,10 @@ function Category({ info, level = 1, ...props }) {
           margin-bottom: 0;
         }
 
+        .separated {
+          margin-bottom: 32px;
+        }
+
         .posts {
           border-left: 1px solid #eaeaea;
           margin-left: 3.5px;
@@ -175,7 +181,10 @@ function Post({ info, level = 1, ...props }) {
   }
 
   return (
-    <div className="link" key={info.href}>
+    <div
+      key={info.href}
+      className={cn('link', { separated: info.sidebarSeparator })}
+    >
       <NavLink
         info={info}
         url={props.url}
@@ -195,6 +204,10 @@ function Post({ info, level = 1, ...props }) {
 
         .link:last-child {
           margin-bottom: 0;
+        }
+
+        .separated {
+          margin-bottom: 32px;
         }
 
         @media screen and (max-width: 950px) {
@@ -350,9 +363,18 @@ export default function DocsNavbarDesktop({
 }) {
   return (
     <>
-      {data.map(categoryInfo => (
-        <Category info={categoryInfo} {...props} key={categoryInfo.name} />
-      ))}
+      {data.map(categoryInfo =>
+        categoryInfo.posts ? (
+          <Category info={categoryInfo} {...props} key={categoryInfo.name} />
+        ) : (
+          <Post
+            info={categoryInfo}
+            level={1}
+            key={categoryInfo.name}
+            {...props}
+          />
+        )
+      )}
     </>
   )
 }
