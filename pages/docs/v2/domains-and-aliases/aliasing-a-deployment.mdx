@@ -19,7 +19,7 @@ export const meta = {
   description:
     'All you need to know about assigning a name to your ZEIT Now deployments',
   editUrl: 'pages/docs/v2/domains-and-aliases/aliasing-a-deployment.mdx',
-  lastEdited: '2019-07-15T17:21:40.000Z'
+  lastEdited: '2019-07-17T15:32:18.000Z'
 }
 
 When deploying a [project](/docs/v2/platform/projects/), whether ready for staging or production, you will want a URL to share the project with others or for yourself to check on other devices.
@@ -34,6 +34,15 @@ There are two ways to create an alias with Now:
 ## Adding Aliases
 
 If you want to use a specific domain with your project, you must add an alias to the project from the **Domains** section of the project dashboard.
+
+<Note hint>
+  A project is defined when first deploying (using the directory name), or when
+  creating a project from your dashboard. You can read more about them in the{' '}
+  <GenericLink href="docs/v2/advanced/platform/projects/">
+    projects documentation
+  </GenericLink>
+  .
+</Note>
 
 To do this, select the project from the dashboard and click the **Domains** tab. Here you will find two options representing different deployment environments, **Staging** and **Production**. Choose the environment for your desired alias and enter the alias, for example, `timothy.now.sh`, into the input box.
 
