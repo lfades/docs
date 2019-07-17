@@ -48,7 +48,7 @@
     {
       "src": "/docs/v2/domains-and-aliases/introduction-to-domains",
       "status": 301,
-      "headers": { "Location": "/docs/v2/domains-and-aliases/introduction" }
+      "headers": { "Location": "/docs/v2/domains-and-aliases/adding-a-domain" }
     },
     {
       "src": "/docs/features/(.*)",
