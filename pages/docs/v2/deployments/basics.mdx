@@ -13,7 +13,7 @@ export const meta = {
   description:
     'Learning the basics of deploying any application with ZEIT Now.',
   editUrl: 'pages/docs/v2/deployments/basics.mdx',
-  lastEdited: '2019-07-16T10:16:07.000Z'
+  lastEdited: '2019-07-17T13:00:00.000Z'
 }
 
 A deployment represents a copy of your application hosted in our cloud platform, accessible to you and your users via HTTP/2.
@@ -198,17 +198,9 @@ These integrations, among many amazing features, deploy your projects automatica
 
 Set up these integrations by following the links below to their individual documentation to benefit from automatic deployments and aliasing through your normal Git workflow:
 
-<Card title="Setup Now for GitHub" href="/docs/v2/integrations/now-for-github">
-  Setup Now for GitHub to get automatic deployments for your new projects.
-</Card>
-
-<Card
-  title="Setup Now for GitLab"
-  href="/docs/v2/integrations/now-for-gitlab"
->Setup Now for GitLab to get automatic deployments for your new projects.</Card>
 ## Read More
 
-Next, add a domain and assign it as an alias to your new project:
+Next, learn how to add a domain and assign it as an alias to your new project:
 
 <Card
   title="Introduction to Domains and Aliases"
@@ -216,6 +208,14 @@ Next, add a domain and assign it as an alias to your new project:
 >
   Add a domain and assign it to a deployment for others to access it through a
   memorable name.
+</Card>
+
+<Card title="Setup Now for GitHub" href="/docs/v2/integrations/now-for-github">
+  Setup Now for GitHub to get automatic deployments for your new projects.
+</Card>
+
+<Card title="Setup Now for GitLab" href="/docs/v2/integrations/now-for-gitlab">
+  Setup Now for GitLab to get automatic deployments for your new projects.
 </Card>
 
 export default withAmp(({ children }) => <Doc meta={meta}>{children}</Doc>, {
