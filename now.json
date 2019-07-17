@@ -138,6 +138,16 @@
       "status": 301,
       "headers": { "Location": "/docs/v2/advanced/global-configuration/$1" }
     },
+    {
+      "src": "/docs/v2/platform/(.*)/?",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/advanced/platform/$1" }
+    },
+    {
+      "src": "/docs/v2/network/(.*)/?",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/advanced/network/$1" }
+    },
     { "src": "(.*)", "dest": "$1" }
   ]
 }
