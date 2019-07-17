@@ -12,19 +12,12 @@ export const meta = {
   title: 'Projects',
   description: 'Setting up projects with a list of deployments on ZEIT Now.',
   editUrl: 'pages/docs/v2/advanced/platform/projects.mdx',
-  lastEdited: '2019-07-17T11:01:24.000Z'
+  lastEdited: '2019-07-17T20:08:58.000Z'
 }
 
 A project is a logical structure that groups deployments and aliases inside of an account or team, based on the name of the project. This structure allows easier tracking and managing of deployments.
 
 The projects structure enables faster locating of [deployments logs, source](/docs/v2/deployments/concepts/special-paths), and [aliases](/docs/v2/domains-and-aliases/aliasing-a-deployment).
-
-<Image
-  src={`https://assets.zeit.co/image/upload/v1547650914/front/docs/projects/projects-list-new.png`}
-  width={2292/2}
-  height={1540/2}
-/>
-<Caption>The Projects dashboard.</Caption>
 
 ## Creating a Project
 
@@ -34,28 +27,14 @@ A project can be created either from the ZEIT account or team dashboard, by usin
 
 Simply visit [the ZEIT dashboard](/dashboard)(optionally selecting a team from the team picker), then click on the "Projects" link in the dashboard navigation.
 
-Then you can create a project by just giving a name.
-
-<Image
-  src={`https://assets.zeit.co/image/upload/v1547650915/front/docs/projects/create-project-new.png`}
-  width={2292/2}
-  height={1540/2}
-/>
-<Caption>Creating a Project from the dashboard.</Caption>
+Then, you can create a project by just giving it a name.
 
 ### 2. With Now CLI
 
 You can create project by just typing the following command:
 
 <TerminalInput>{`now projects add <your-project-name>`}</TerminalInput>
-<Caption>Creating a project with Now CLI.</Caption>
-
-<Image
-  src={`https://assets.zeit.co/image/upload/v1547650366/front/docs/projects/create-project-cli.png`}
-  width={1482/2}
-  height={950/2}
-/>
-<Caption>Creating a Project from Now CLI.</Caption>
+<Caption>Creating a project with <GenericLink href="/now">Now CLI</GenericLink>.</Caption>
 
 <Note>
   You need to download the latest version of Now CLI in order to run the above
