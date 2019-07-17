@@ -140,11 +140,10 @@ function Category({ info, level = 1, ...props }) {
 
         .posts {
           border-left: 1px solid #eaeaea;
-          margin-left: 3.5px;
           margin-top: 0;
           height: 0;
           overflow: hidden;
-          padding-left: 21px;
+          padding-left: 20px;
         }
 
         .open > .posts {

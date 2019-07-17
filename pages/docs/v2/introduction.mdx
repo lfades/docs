@@ -12,30 +12,46 @@ export const meta = {
   description:
     'An introduction to the ZEIT Now platform and how to get started deploying any kind of application.',
   editUrl: 'pages/docs/v2/introduction.mdx',
-  lastEdited: '2019-07-17T11:37:39.000Z'
+  lastEdited: '2019-07-17T18:07:42.000Z'
 }
 
-ZEIT Now is a cloud platform for static sites and serverless functions. It enables developers to host websites and web services that deploy instantly, scale automatically, and require no supervision, all with no configuration.
+ZEIT Now is a cloud platform for **static sites** and **serverless functions**. It enables developers to host websites and web services that **deploy instantly**, **scale automatically**, and requires **no supervision**, all with **no configuration**.
 
-This documentation contains all of the resources needed to **get up and running with Now**. Get started with some of the features of Now below and explore the documentation in their sections to learn how to make serverless deployments work for you.
+Getting started with ZEIT Now takes just a few steps and lets you get up and running with your new project in less than a minute.
 
-### Try Now
+## Install ZEIT Now
 
-The following example highlights the ease with which you can deploy static sites (like a new [Next.js](https://nextjs.org/) app) combined with a serverless function that can produce a dynamic response.
+To deploy with Now, you will need to install Now CLI, a frequently updated, and [open-source](https://github.com/zeit/now-cli), command-line interface.
 
-<Introduction />
+You can get Now CLI from either npm or Yarn. Using npm, run the following command from your terminal:
 
-Deploy the simple application above and get instantly redirected to your new deployment. Edit the code to see your changes live and then get started with your applications locally using the same power.
+<TerminalInput>npm install --global now</TerminalInput>
+<Caption>Installing Now CLI with npm in the terminal.</Caption>
 
-### Get Started
+To verify that you have installed Now CLI, try running `now help` from your terminal.
 
-To learn more and get the most out of Now we recommend that you install [Now CLI](https://zeit.co/download).
+With Now CLI installed, you can now login using the following command:
 
-They will give you complete control over your account and enable you to instantly [deploy applications](/docs/v2/deployments/basics), [assign custom domain names](/docs/v2/domains-and-aliases/aliasing-a-deployment) and much more.
+<TerminalInput>now login</TerminalInput>
+<Caption>Login with Now CLI from the terminal.</Caption>
 
-<Card title="Read Next: Install" href="/docs/v2/getting-started/installation">
-  Get started deploying your own applications with the Now clients and
-  integrations.
-</Card>
+## Creating a Project and Deploying
+
+You can create a new Next.js application with the following command using either npm or Yarn:
+
+<TerminalInput>npm create next-app my-next-project</TerminalInput>
+<Caption>Creating a new Next.js project with npm.</Caption>
+
+When your Next.js app is created, all you have to do is move into the directory (with `cd my-next-project` in your terminal) and then deploy your app with a single command in your terminal:
+
+<TerminalInput>now</TerminalInput>
+<Caption>Deploying your new Next.js project with Now CLI.</Caption>
+
+Once deployed, you will get a unique URL to reference the current version of your project, and a staging alias that is assigned on each deployment to share the latest changes under the same address.
+
+These URLs look like the following:
+
+- Unique Deployment URL: <https://my-next-project-6bnjtkazh.now.sh/>
+- Staging Alias: <https://my-next-project.now-examples.now.sh/>
 
 export default ({ children }) => <Doc meta={meta}>{children}</Doc>
