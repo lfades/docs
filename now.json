@@ -115,7 +115,9 @@
     {
       "src": "/docs/v2/development/(.*)/?",
       "status": 301,
-      "headers": { "Location": "/docs/v2/advanced/local-development" }
+      "headers": {
+        "Location": "/docs/v2/deployment/serverless-functions#local-development"
+      }
     },
     {
       "src": "/docs/v2/deployments/(.*)",
