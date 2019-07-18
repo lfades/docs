@@ -1,6 +1,6 @@
 import { withAmp } from 'next/amp'
 import Doc from '~/components/layout/docs'
-import { TerminalInput, TerminalOutput } from '~/components/text/terminal'
+import { TerminalInput } from '~/components/text/terminal'
 import { GenericLink } from '~/components/text/link'
 import { InlineCode } from '~/components/text/code'
 import { Image } from '~/components/media'
@@ -12,10 +12,172 @@ export const meta = {
   title: 'Serverless Functions',
   description: 'Learn how to deploy serverless functions with ZEIT Now.',
   editUrl: 'pages/docs/v2/deployment/serverless-functions.mdx',
-  lastEdited: '2019-07-18T12:34:53.000Z'
+  lastEdited: '2019-07-18T13:48:26.000Z'
 }
 
-Serverless Functions with Now
+ZEIT Now deployments support various backend languages that you can deploy as Serverless functions.
+
+## Deploying Serverless Functions
+
+To deploy serverless functions without any additional configuration, you can put files using backend languages in an `api` directory in your project's root.
+
+Then, using [Now CLI](/download), run the following command to deploy from your terminal:
+
+<TerminalInput>now</TerminalInput>
+<Caption>Deploying a project with Now CLI in one command.</Caption>
+
+### Deploying a Node.js API
+
+For an example of creating a Node.js API with serverless functions, create a `name.js` file in the `api` directory at your project's root, with the following code which recieves a name query string and returns a string when requested:
+
+```js
+module.exports = (req, res) => {
+  const { name = 'World' } = req.query
+  res.send(`Hello ${name}!`)
+}
+```
+
+Then, all you need to do to have a live API is to deploy with [Now CLI](/download) from your terminal:
+
+<TerminalInput>now</TerminalInput>
+<Caption>One-command deployment with <GenericLink href="/download">Now CLI</GenericLink>.</Caption>
+
+The resulting deployment will contain your Node.js endpoint as a serverless function and will provide you with a URL like the following, with your API ready to go: <https://node-api.now-examples.now.sh/api/name?name=all>
+
+<Note>
+  For more information on how Node.js works with ZEIT Now, view the technical{' '}
+  <GenericLink href="/docs/v2/advanced/builders/node-js-now-node">
+    reference for the base
+  </GenericLink>
+  .
+</Note>
+
+### Deploying a Go API
+
+To create an API with serverless Go functions in your ZEIT Now deployments, you can provide an exported function like the following, cohesive with the `net/http` Go API:
+
+```go
+package handler
+
+import (
+        "fmt"
+        "net/http"
+)
+
+func Handler(w http.ResponseWriter, r *http.Request) {
+        fmt.Fprintf(w, "<h1>Hello from Go on Now!</h1>")
+}
+```
+
+Then, deploying with Now CLI with the `now` command from your terminal will result in a serverless Go function and with a link like the following: <https://go-api.now-examples.now.sh/api/hello>
+
+<Note>
+  For more information on how Go works with ZEIT Now, view the technical{' '}
+  <GenericLink href="/docs/v2/advanced/builders/go-now-go">
+    reference for the runtime
+  </GenericLink>
+  .
+</Note>
+
+### Deploying a Python API
+
+To create an API with serverless Python functions in your ZEIT Now deployments, you can provide an exported function like the following, with `handler` defined:
+
+```python
+from http.server import BaseHTTPRequestHandler
+from datetime import datetime
+
+class handler(BaseHTTPRequestHandler):
+
+  def do_GET(self):
+    self.send_response(200)
+    self.send_header('Content-type', 'text/plain')
+    self.end_headers()
+    self.wfile.write(str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')).encode())
+    return
+```
+
+<Caption>A serverless Python function that returns the current date.</Caption>
+
+Then, deploying with Now CLI with the `now` command from your terminal will result in a serverless Go function and with a link like the following: <https://python-api.now-examples.now.sh/api/date>
+
+<Note>
+  For more information on how Python works with ZEIT Now, view the technical{' '}
+  <GenericLink href="/docs/v2/advanced/builders/python-now-python">
+    reference for the runtime
+  </GenericLink>
+  .
+</Note>
+
+### More Examples
+
+For more examples on applications you can deploy with serverless functions, see the [ZEIT Now examples repository on GitHub](https://github.com/zeit/now-examples).
+
+You can use any of the examples from the ZEIT Now examples repository by using the following command from [Now CLI](/download) in your terminal, then choosing an application to start with:
+
+<TerminalInput>now init</TerminalInput>
+<Caption>Initializing a project with Now CLI.</Caption>
+
+## Local Development
+
+Now provides an additional command with Now CLI to help you develop serverless functions locally by replicating the production environment from Now on your localhost.
+
+If you have an `api` directory like the [above examples](#deploying-serverless-functions) on this page, you can run the following command to start a local development environment that supports your serverless API and allows you to develop locally:
+
+<TerminalInput>now dev</TerminalInput>
+<Caption>starting a local development environment using Now CLI, for serverless functions.</Caption>
+
+<Note>
+  The <InlineCode>now dev</InlineCode> command is still in beta. If you have any
+  feedback,{' '}
+  <GenericLink href="https://zeit.co/feedback/dev">
+    please let us know
+  </GenericLink>
+  .
+</Note>
+
+If you have a statically generated frontend that supports its own development environment, such as Next.js, we recommend creating a `dev` script within a `package.json` file at the root of your project that `now dev` can use and extend:
+
+```json
+{
+  ...
+  "scripts": {
+    "dev": "next"
+  }
+}
+```
+
+<Caption>
+  Defining a custom <InlineCode>dev</InlineCode> script for Next.js in a{' '}
+  <InlineCode>package.json</InlineCode> file.
+</Caption>
+
+## Advanced Usage
+
+For an advanced configuration and structure, you can use a `now.json` file to set up [Builds](/docs/v2/advanced/builds) to configure your own structure and behaviour.
+
+We do, however, recommend sticking to the `api` directory to keep things simple for your project.
+
+## Related
+
+For more information on what to do next, we recommend the following articles:
+
+<Card
+  title="Aliasing Your Projects"
+  href="/docs/v2/domains-and-aliases/aliasing-a-deployment"
+>
+  Once deployed, your projects can be aliased to a custom domain or specified
+  name or your choice to give it a primary place to see the latest version of
+  your application.
+</Card>
+
+<Card
+  title="Local Development Reference"
+  href="/docs/v2/advanced/local-development"
+>
+  For more information on how Local Development works with Now, read the
+  reference documentation.
+</Card>
 
 export default withAmp(({ children }) => <Doc meta={meta}>{children}</Doc>, {
   hybrid: true
