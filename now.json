@@ -96,9 +96,9 @@
       "headers": { "Location": "/docs/v2/advanced/concepts/$1" }
     },
     {
-      "src": "/docs/v2/deployments/(routes|configuration|builds)",
+      "src": "/docs/v2/deployments/(routes|configuration|builds)(.*)",
       "status": 301,
-      "headers": { "Location": "/docs/v2/advanced/$1" }
+      "headers": { "Location": "/docs/v2/advanced/$1$2" }
     },
     {
       "src": "/docs/v2/deployments/ignoring-source-paths/?",
