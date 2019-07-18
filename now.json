@@ -101,19 +101,19 @@
       "headers": { "Location": "/docs/v2/advanced/$1$2" }
     },
     {
-      "src": "/docs/v2/deployments/ignoring-source-paths/?",
+      "src": "/docs/v2/deployments/ignoring-source-paths(.*)",
       "status": 301,
       "headers": {
-        "Location": "/guides/prevent-uploading-sourcepaths-with-nowignore"
+        "Location": "/guides/prevent-uploading-sourcepaths-with-nowignore$1"
       }
     },
     {
-      "src": "/docs/v2/deployments/basics",
+      "src": "/docs/v2/deployments/basics(.*)",
       "status": 301,
-      "headers": { "Location": "/docs/v2/deployment/deployment-basics" }
+      "headers": { "Location": "/docs/v2/deployment/deployment-basics$1" }
     },
     {
-      "src": "/docs/v2/development/(.*)/?",
+      "src": "/docs/v2/development/(.*)",
       "status": 301,
       "headers": {
         "Location": "/docs/v2/deployment/serverless-functions#local-development"
