@@ -199,10 +199,6 @@ function Post({ info, level = 1, ...props }) {
           margin: 18px 0;
         }
 
-        .link.level-1 {
-          margin-left: 21px;
-        }
-
         .link:first-child {
           margin-top: 0;
         }

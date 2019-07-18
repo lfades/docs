@@ -20,35 +20,32 @@
       "src": "/docs/max-lambda-size",
       "status": 301,
       "headers": {
-        "Location": "/docs/v2/deployments/concepts/lambdas#maximum-bundle-size"
+        "Location": "/docs/v2/advanced/concepts/lambdas#maximum-bundle-size"
       }
     },
     {
       "src": "/docs/github",
       "status": 301,
-      "headers": { "Location": "/docs/v2/integrations/now-for-github" }
+      "headers": {
+        "Location": "/docs/v2/advanced/git-integrations/now-for-github"
+      }
     },
     {
       "src": "/docs/aliasing",
       "status": 301,
       "headers": {
-        "Location": "/docs/v2/domains-and-aliases/aliasing-a-deployment"
+        "Location": "/docs/v2/aliasing-a-deployment"
       }
     },
     {
       "src": "/docs/dns",
       "status": 301,
-      "headers": { "Location": "/docs/v2/domains-and-aliases/dns" }
+      "headers": { "Location": "/docs/v2/domains/dns" }
     },
     {
       "src": "/docs/v2/routing/(.*)/?",
       "status": 301,
       "headers": { "Location": "/docs/v2/network/$1" }
-    },
-    {
-      "src": "/docs/v2/domains-and-aliases/introduction-to-domains",
-      "status": 301,
-      "headers": { "Location": "/docs/v2/domains-and-aliases/adding-a-domain" }
     },
     {
       "src": "/docs/features/(.*)",
@@ -71,9 +68,9 @@
       "headers": { "Location": "/guides/updating-now-cli" }
     },
     {
-      "src": "/docs/guides/(.*)",
+      "src": "/docs/guides/.*",
       "status": 301,
-      "headers": { "Location": "/docs/v1/guides/$1" }
+      "headers": { "Location": "/guides" }
     },
     {
       "src": "/docs/getting-started/(.*)",
@@ -110,7 +107,7 @@
     {
       "src": "/docs/v2/deployments/basics(.*)",
       "status": 301,
-      "headers": { "Location": "/docs/v2/deployment/deployment-basics$1" }
+      "headers": { "Location": "/docs/v2/deployment-basics$1" }
     },
     {
       "src": "/docs/v2/development/(.*)",
@@ -120,9 +117,9 @@
       }
     },
     {
-      "src": "/docs/v2/deployments/(.*)",
+      "src": "/docs/v2/deployments/.*",
       "status": 301,
-      "headers": { "Location": "/docs/v2/deployment/$1" }
+      "headers": { "Location": "/docs/v2/deployment-basics" }
     },
     {
       "src": "/examples",
@@ -158,17 +155,17 @@
       "headers": { "Location": "/docs/v2/advanced/configuration/$1" }
     },
     {
-      "src": "/docs/v2/deployments/routes/?",
+      "src": "/docs/v2/deployments/routes(.*)",
       "status": 301,
       "headers": { "Location": "/docs/v2/advanced/routes/$1" }
     },
     {
-      "src": "/docs/v2/deployments/builds/(.*)/?",
+      "src": "/docs/v2/deployments/builds/(.*)",
       "status": 301,
       "headers": { "Location": "/docs/v2/advanced/builds/$1" }
     },
     {
-      "src": "/docs/v2/deployments/builders/(.*)/?",
+      "src": "/docs/v2/deployments/builders/(.*)",
       "status": 301,
       "headers": { "Location": "/docs/v2/advanced/builders/$1" }
     },
@@ -190,7 +187,9 @@
     {
       "src": "/docs/v2/development/basic/(.*)/?",
       "status": 301,
-      "headers": { "Location": "/docs/v2/advanced/local-development/$1" }
+      "headers": {
+        "Location": "/docs/v2/deployment/serverless-functions#local-development"
+      }
     },
     { "src": "(.*)", "dest": "$1" }
   ]
