@@ -148,6 +148,11 @@
       "status": 301,
       "headers": { "Location": "/docs/v2/advanced/network/$1" }
     },
+    {
+      "src": "/docs/v2/development/basic/(.*)/?",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/advanced/local-development/$1" }
+    },
     { "src": "(.*)", "dest": "$1" }
   ]
 }
