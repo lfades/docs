@@ -191,6 +191,13 @@
         "Location": "/docs/v2/deployment/serverless-functions#local-development"
       }
     },
+    {
+      "src": "/docs/v2/integrations/(.*)",
+      "status": 301,
+      "headers": {
+        "Location": "/docs/v2/advanced/git-integrations/$1"
+      }
+    },
     { "src": "(.*)", "dest": "$1" }
   ]
 }
