@@ -65,7 +65,7 @@ function Landing() {
             </div>
 
             <div className="get-started-cta">
-              <GenericLink href="/docs/v2/getting-started/introduction-to-now">
+              <GenericLink href="/docs/v2/introduction">
                 <Button
                   bgColor="#0070F3"
                   width={284}
@@ -227,6 +227,11 @@ function Landing() {
                       </div>
                     )
                 )}
+                <div className="view-all">
+                  <GenericLink href="/docs/v2/introduction">
+                    View All Docs →
+                  </GenericLink>
+                </div>
               </div>
             </Wrapper>
           </section>
@@ -362,6 +367,10 @@ function Landing() {
           margin-bottom: 32px;
           padding: 0 24px;
           text-align: center;
+        }
+
+        .view-all {
+          margin-top: 24px;
         }
 
         .search {
