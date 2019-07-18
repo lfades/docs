@@ -1,6 +1,6 @@
 import { withAmp } from 'next/amp'
 import Doc from '~/components/layout/docs'
-import { TerminalInput } from '~/components/text/terminal'
+import { TerminalInput, TerminalOutput } from '~/components/text/terminal'
 import { GenericLink } from '~/components/text/link'
 import { InlineCode } from '~/components/text/code'
 import { Image } from '~/components/media'
@@ -9,212 +9,135 @@ import Card from '~/components/card'
 import Note from '~/components/text/note'
 
 export const meta = {
-  title: 'Deployment Basics',
-  description:
-    'Learning the basics of deploying any application with ZEIT Now.',
+  title: 'Cloud Deployment',
+  description: 'Learn how to deploy any application with ZEIT Now.',
   editUrl: 'pages/docs/v2/deploying-and-developing/cloud-deployment.mdx',
-  lastEdited: '2019-07-17T20:31:59.000Z'
+  lastEdited: '2019-07-18T12:19:58.000Z'
 }
 
-A deployment represents a copy of your application hosted in our cloud platform, accessible to you and your users via HTTP/2.
+A ZEIT Now deployment represents a copy of your application hosted in ZEIT's cloud platform, accessible to you and your users via HTTP/2.
 
-The deployment process gets triggered by either an [API call](/docs/api), the `now` command, or `git push` if using our [GitHub integration](/docs/v2/integrations/now-for-github).
+To create a new deployment using [Now CLI](/download), run the following command from your terminal:
 
-The deployment process involves two phases we handle on your behalf:
+<TerminalInput>now</TerminalInput>
+<Caption>One-command deployment with <GenericLink href="/download">Now CLI</GenericLink>.</Caption>
+
+## Creating a Project to Deploy
+
+ZEIT Now will deploy any statically generated framework without any extra configuration.
+
+To set up a new project using your pick of a variety of frontend frameworks, Now CLI comes with a helpful command to get started in seconds. Run the `now init` command in your terminal to get started:
+
+<TerminalInput>now init</TerminalInput>
+<Caption>Running the Now CLI <InlineCode>init</InlineCode> command.</Caption>
+
+You will then get an output, similar to the following, where you can choose the frontend you'd like to work with:
+
+<TerminalOutput><b>{`> Select example:`}</b> <span style={{color: 'gray'}}>(Use arrow keys)</span><br/>
+&nbsp;&nbsp;angular<br/>
+&nbsp;&nbsp;aurelia<br/>
+&nbsp;&nbsp;brunch<br/>
+&nbsp;&nbsp;charge<br/>
+&nbsp;&nbsp;create-react-app+functions<br/>
+&nbsp;&nbsp;create-react-app<br/>
+&nbsp;&nbsp;docusaurus<br/>
+&nbsp;&nbsp;docz<br/>
+&nbsp;&nbsp;elm<br/>
+&nbsp;&nbsp;gatsby+functions<br/>
+<i style={{color: 'cyan', fontStyle: 'normal'}}>❯ gatsby</i><br/>
+&nbsp;&nbsp;gridsome<br/>
+&nbsp;&nbsp;hexo<br/>
+&nbsp;&nbsp;hugo<br/>
+&nbsp;&nbsp;jekyll<br/>
+<span style={{color: 'gray'}}>(Move up and down to reveal more choices)</span>
+</TerminalOutput>
+<Caption>Selecting a project using the <InlineCode>now init</InlineCode> command in a terminal.</Caption>
+
+Choosing Gatsby from the list – for example – will initilize a Gatsby project in your current directory.
+
+<Note>
+  You can also use a create script from npm, such as{' '}
+  <InlineCode>npx gatsby new</InlineCode> or{' '}
+  <InlineCode>npm create next-app</InlineCode> to get started with no additional
+  configuration.
+</Note>
+
+The final step is to deploy with Now CLI using the following command from your terminal:
+
+<TerminalInput>now</TerminalInput>
+<Caption>Deploying with Now CLI.</Caption>
+
+If you need to structure your application beyond the default configuration of Now, read about advanced [Configuration](/docs/v2/advanced/configuration) and [Builds](/docs/v2/advanced/builds).
+
+## Build on Deploy
+
+If you want to have your statically generated application built fresh on each deploy, Now recognizes the `build` script in a `package.json` file and executes it as a build step before serving your application.
+
+For example, a Next.js app would use the following scripts property inside the applications `package.json`:
+
+```json
+{
+  ...
+  "scripts": {
+    "build": "next build"
+  }
+}
+```
+
+<Caption>
+  A <InlineCode>build</InlineCode> script for Next.js inside an example{' '}
+  <InlineCode>package.json</InlineCode>.
+</Caption>
+
+## Automatic Deployments with Git
+
+If you want to avoid manually deploying your project with each change, ZEIT offers two integrations for Git, [Now for GitHub](/docs/v2/integrations/now-for-github) and [Now for GitLab](/docs/v2/integrations/now-for-github).
+
+These integrations provide the ability to automatically deploy with each push to a GitHub repository or GitLab project, and to alias automatically when pushing to the default branch.
+
+To get started with either integration, go to your [account settings page](/account) (or team settings) and link either of the services with ZEIT.
+
+Once linked, you will guided through setup by choosing repositories or projects to enable deployments with, and then Now will begin deploying each push on those selected repositories or projects autonimously.
+
+<Image
+src={`${process.env.IMAGE_ASSETS_URL}/blog/now-for-github/ci.png`}
+width={581}
+height={185}
+/>
+<Caption>Now for GitHub providing a deployment for a GitHub pull request.</Caption>
+
+## How Deployments Work
+
+Every change to your code can be deployed as a copy of the current version of your application, [globally distributed](/smart-cdn) to minimize latency when accessing that deployment.
+
+Deployments are [immutable](/docs/v2/advanced/concepts/immutability) and cannot be edited. To update your application, you will need to make changes locally and redeploy. This brings many benefits, including the ability to revert to an earlier version instantly in case of errors or bugs in your application, or to visit an older deployment whenever, for reference.
+
+The process of deploying involves two phases we handle on your behalf:
 
 - Source code synchronization: we take your application sources and upload them.
 - Build steps execution: dependent on the filetypes available and your project setup, we detect your project and build it into outputs, ready to serve.
 
-The resulting deployment is:
+If you want to learn more about the concepts behind ZEIT Now deployments, read our [Deployment Concepts reference](/docs/v2/advanced/concepts/overview).
 
-- [Immutable](/docs/v2/deployments/concepts/immutability)
-- [Globally Distributed](/smart-cdn)
-- [Serverless](/docs/v2/deployments/concepts/lambdas/#conceptual-model)
+## Related
 
-## Your First Deployment
-
-In just a few steps, learn how to create your first project using Next.js and a single Node.js endpoint, then deploy it with ZEIT Now without any additional configuration.
-
-The following steps use [Now CLI](/docs/v2/getting-started/installation#now-cli) for an integrated development environment and deployment commands. If you have not installed it yet, please refer to the [installation instructions](/docs/v2/getting-started/installation).
-
-### Step 1: Create a Project
-
-Start by creating a directory for your new project. Open up [your terminal](https://hyper.is) and use the following command:
-
-<TerminalInput>mkdir my-app && cd my-app</TerminalInput>
-<Caption>Creating and moving into the <InlineCode>my-app</InlineCode> directory.</Caption>
-
-Next, install the dependencies you are going to use for the frontend:
-
-<TerminalInput>yarn add next react react-dom</TerminalInput>
-<Caption>Installing Next.js, React, and React DOM as the project dependencies.</Caption>
-
-Create a `pages` directory, and then use your text editor to fill an `index.js` inside of that directory, with the following contents:
-
-```js
-function Home() {
-  return (
-    <main>
-      <h1>Welcome to my website</h1>
-      <p>Deployed with ZEIT Now!</p>
-    </main>
-  )
-}
-
-export default Home
-```
-
-<Caption>A small example Next.js Index page.</Caption>
-
-To have this Next.js app build fresh with every deployment, and for the app to run using the Next.js module in development, add the following script to your `package.json` file (created when installing the dependencies):
-
-```json
-{
-  "scripts": {
-    "build": "next build",
-    "dev": "next"
-  },
-  "dependencies": {...}
-}
-```
-
-<Caption>
-  An example <InlineCode>package.json</InlineCode> with a{' '}
-  <InlineCode>scripts</InlineCode> object used to build Next.js for deployment.
-</Caption>
-
-### Step 2: Local Development
-
-Now you have a deployment-ready Next.js page, try creating a local development environment using the following command from your terminal (within the project's root directory):
-
-<TerminalInput>now dev</TerminalInput>
-<Caption>Using Now CLI to create a development environment that replicates the live deployment environment.</Caption>
-
-<Image
-  src={`${process.env.ASSETS}/docs/getting-started/deploying/now-dev.png`}
-  width={1526/2}
-  height={824/2}
-/>
-<Caption>A local development server, started with <GenericLink href="/docs/v2/getting-started/installation#now-cli">Now CLI</GenericLink>.</Caption>
-
-### Step 3: Add an API
-
-The power of Now does not stop at building and serving your frontend. Often, you will want to introduce data to your project, and there is no better way to do that than with your own API.
-
-Now supports building anything, using a dynamic language, within an `api` directory as [Serverless Lambdas](/docs/v2/deployments/concepts/lambdas). These are entry points that are invoked when requested (through accessing their URL path), execute code, and respond dynamically.
-
-Get started by creating a function that will be executed whenever the user goes to `/api/date`, which will then output the date.
-
-Create an `api` directory and then a `date.js` file inside of it with the following contents:
-
-```js
-module.exports = (req, res) => {
-  const date = new Date().toString()
-  res.status(200).send(date)
-}
-```
-
-<Caption>A Node.js API endpoint to return the current date and time.</Caption>
-
-Using `now dev`, like in [Local Development](#local-development), go to [localhost:3000/api/date](http://localhost:3000/api/date) (unless you were assigned another port due to 3000 being in use, then use that port) and you will see your dynamic date response.
-
-<Note>
-  Now automatically ommits the filetype when accessing your API endpoint so you
-  don't have to worry about it.
-</Note>
-
-<Image
-  src={`${process.env.ASSETS}/docs/getting-started/deploying/api-response.png`}
-  width={1528/2}
-  height={904/2}
-/>
-<Caption>The new API endpoint showing the date and time from the local development environment.</Caption>
-
-Going one step further, you can even link your frontend to your API and show the latest date when your frontend loads. Change your `pages/index.js` page to the following to make use of your new API:
-
-```js
-import { useEffect, useState } from 'react'
-
-function Home() {
-  const [date, setDate] = useState(null)
-
-  useEffect(() => {
-    async function getDate() {
-      const res = await fetch('/api/date')
-      const newDate = await res.text()
-      setDate(newDate)
-    }
-    getDate()
-  }, [])
-
-  return (
-    <main>
-      <h1>Welcome to my website</h1>
-      <p>Deployed with ZEIT Now!</p>
-      <p>{date ? date : 'Loading date...'}</p>
-    </main>
-  )
-}
-
-export default Home
-```
-
-<Caption>
-  Extending the initial Next.js page with a function to get the date from your
-  API.
-</Caption>
-
-### Step 4: Deploy
-
-Using Now CLI, all you have to do now is run `now` from within the `my-app` directory root:
-
-<TerminalInput>now</TerminalInput>
-
-The output looks like the following and includes a deployment URL:
-
-<Image
-  src={`${process.env.ASSETS}/docs/getting-started/deploying/terminal-deploy.png`}
-  width={1526/2}
-  height={984/2}
-/>
-<Caption>The output of deploying a project with <GenericLink href="/docs/v2/getting-started/installation#now-cli">Now CLI</GenericLink>.</Caption>
-
-Check the automatic staging alias for the deployment for a live example: <https://my-app-timothy.now-examples.now.sh/>
-
-<Image
-  src={`${process.env.ASSETS}/docs/getting-started/deploying/deployed.png`}
-  width={1528/2}
-  height={904/2}
-/>
-<Caption>The output of deploying a project with <GenericLink href="/docs/v2/getting-started/installation#now-cli">Now CLI</GenericLink>.</Caption>
-
-This URL is unique to the source code inside that directory. If you run `now` again, the same deployment is returned. This is why we call our deployments [immutable](/docs/v2/deployments/concepts/immutability).
-
-### Simplifying Deployment with Git
-
-Now also offers an easier method to deploy with integrations for both [GitHub](/docs/v2/integrations/now-for-github) and [GitLab](/docs/v2/integrations/now-for-github).
-
-These integrations, among many amazing features, deploy your projects automatically with each `git push`, and aliases them to your own domains or chosen name when merging to the default branch.
-
-Set up these integrations by following the links below to their individual documentation to benefit from automatic deployments and aliasing through your normal Git workflow:
-
-## Read More
-
-Next, learn how to add a domain and assign it as an alias to your new project:
+For more information on what to do next, we recommend the following articles:
 
 <Card
-  title="Adding a Domain"
-  href="/docs/v2/domains-and-aliases/adding-a-domain"
+  title="Aliasing Your Projects"
+  href="/docs/v2/domains-and-aliases/aliasing-a-deployment"
 >
-  Learn how to add a domain for your deployments.
+  Once deployed, your projects can be aliased to a custom domain or specified
+  name or your choice to give it a primary place to see the latest version of
+  your application.
 </Card>
 
-<Card title="Setup Now for GitHub" href="/docs/v2/integrations/now-for-github">
-  Setup Now for GitHub to get automatic deployments for your new projects.
-</Card>
-
-<Card title="Setup Now for GitLab" href="/docs/v2/integrations/now-for-gitlab">
-  Setup Now for GitLab to get automatic deployments for your new projects.
+<Card
+  title="Create Serverless Functions"
+  href="/docs/v2/deployments/serverless-functions"
+>
+  If you want to extend your applications with dynamic data, read more about
+  creating Serverless Functions in your projects.
 </Card>
 
 export default withAmp(({ children }) => <Doc meta={meta}>{children}</Doc>, {
