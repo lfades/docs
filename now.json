@@ -81,6 +81,48 @@
       "headers": { "Location": "/docs/v1/getting-started/$1" }
     },
     {
+      "src": "/docs/v2/getting-started/(.*)/?",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/introduction" }
+    },
+    {
+      "src": "/docs/v2/deployments/(?:builders|official-builders)/(.*)/?",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/advanced/builders/$1" }
+    },
+    {
+      "src": "/docs/v2/deployments/concepts/(.*)/?",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/advanced/concepts/$1" }
+    },
+    {
+      "src": "/docs/v2/deployments/(routes|configuration|builds)",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/advanced/$1" }
+    },
+    {
+      "src": "/docs/v2/deployments/ignoring-source-paths/?",
+      "status": 301,
+      "headers": {
+        "Location": "/guides/prevent-uploading-sourcepaths-with-nowignore"
+      }
+    },
+    {
+      "src": "/docs/v2/deployments/basics",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/deployment/deployment-basics" }
+    },
+    {
+      "src": "/docs/v2/development/(.*)/?",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/advanced/local-development" }
+    },
+    {
+      "src": "/docs/v2/deployments/(.*)",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/deployment/$1" }
+    },
+    {
       "src": "/docs/examples/(.*)",
       "status": 301,
       "headers": { "Location": "https://github.com/zeit/now-examples" }
@@ -142,11 +184,6 @@
       "src": "/docs/v2/platform/(.*)/?",
       "status": 301,
       "headers": { "Location": "/docs/v2/advanced/platform/$1" }
-    },
-    {
-      "src": "/docs/v2/network/(.*)/?",
-      "status": 301,
-      "headers": { "Location": "/docs/v2/advanced/network/$1" }
     },
     {
       "src": "/docs/v2/development/basic/(.*)/?",
