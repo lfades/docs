@@ -79,7 +79,7 @@ function Landing() {
 
           <Wrapper>
             <section className="topics-section">
-              <H3>Topics</H3>
+              <H3>Guides</H3>
               <div className="topics-container">
                 <List columnsDesktop={3} columnsTablet={2} columnsMobile={1}>
                   <Topic
