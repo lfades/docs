@@ -49,7 +49,7 @@ function Landing() {
         />
         <main>
           <section className="hero-section">
-            <H1>Start Building with ZEIT Now</H1>
+            <H1>Start Deploying with ZEIT Now</H1>
             <div className="search">
               <InstantSearch
                 indexName="prod_docs"
