@@ -15,7 +15,7 @@ export const meta = {
   description:
     'The official Rust Builder for ZEIT Now. Deploy serverless invokable functions with Rust source code.',
   editUrl: 'pages/docs/v2/advanced/builders/now-rust.mdx',
-  lastEdited: '2019-07-16T12:01:51.000Z'
+  lastEdited: '2019-07-18T13:45:29.000Z'
 }
 
 <Tag>Status: Beta</Tag>
@@ -28,7 +28,7 @@ Whenever you want to expose an API or a function written in Rust.
 
 ## How to Use It
 
-Define an `index.rs` file inside a folder as follows:
+Define an `index.rs` file inside a `/api` directory as follows:
 
 ```rust
 use http::{Request, Response, StatusCode, header};
@@ -43,6 +43,15 @@ fn handler(request: Request<()>) -> http::Result<Response<String>> {
     Ok(response)
 }
 ```
+
+<Note>
+  If you want to use a directory name other than <InlineCode>/api</InlineCode>,
+  read the{' '}
+  <GenericLink href="/docs/v2/advanced/builds">
+    Builds documentation
+  </GenericLink>
+  .
+</Note>
 
 Define a `Cargo.toml` like so:
 
@@ -64,29 +73,6 @@ http = "0.1"
   Your <InlineCode>Cargo.toml</InlineCode> file should contain the Rust crates
   used in your application.
 </Note>
-
-And define a `now.json` like:
-
-```json
-{
-  "name": "rust-project",
-  "version": 2,
-  "builds": [
-    {
-      "src": "index.rs",
-      "use": "@now/rust"
-    }
-  ]
-}
-```
-
-<Caption>
-  A <InlineCode>now.json</InlineCode> file defining the{' '}
-  <GenericLink href="/docs/v2/platform/overview#versioning">
-    Now platform version
-  </GenericLink>{' '}
-  and a build step using the <InlineCode>@now/rust</InlineCode> Builder.
-</Caption>
 
 The example above can be seen live at <https://rust-kit-rm1x19uq8.now.sh/>.
 

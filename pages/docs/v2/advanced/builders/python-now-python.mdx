@@ -14,7 +14,7 @@ export const meta = {
   description:
     'The official Python Builder for ZEIT Now. Serverless invokable functions from Python source code for ZEIT Now deployments.',
   editUrl: 'pages/docs/v2/advanced/builders/python-now-python.mdx',
-  lastEdited: '2019-07-16T12:01:51.000Z'
+  lastEdited: '2019-07-18T13:45:29.000Z'
 }
 
 <Tag>Status: Beta</Tag>
@@ -27,7 +27,7 @@ Whenever you want to expose an API or a function written in Python.
 
 ## How to Use It
 
-Define a `index.py` file inside a folder as follows:
+Define a `index.py` file inside a `/api` directory as follows:
 
 ```python
 from http.server import BaseHTTPRequestHandler
@@ -44,19 +44,19 @@ class handler(BaseHTTPRequestHandler):
         return
 ```
 
+<Note>
+  If you want to use a directory name other than <InlineCode>/api</InlineCode>,
+  read the{' '}
+  <GenericLink href="/docs/v2/advanced/builds">
+    Builds documentation
+  </GenericLink>
+  .
+</Note>
+
 Inside `requirements.txt` define:
 
 ```
 cowpy==1.0.3
-```
-
-And define a `now.json` like so:
-
-```json
-{
-  "version": 2,
-  "builds": [{ "src": "*.py", "use": "@now/python" }]
-}
 ```
 
 The example above can be seen live at <https://python-deployment-mhssg6mqx.now.sh/>
@@ -87,16 +87,6 @@ Inside `requirements.txt` define:
 flask==1.0.2
 ```
 
-And define a `now.json` like so:
-
-```json
-{
-  "version": 2,
-  "builds": [{ "src": "index.py", "use": "@now/python" }],
-  "routes": [{ "src": "(.*)", "dest": "index.py" }]
-}
-```
-
 Most frameworks use their own implementation of routing. However, you can use a catch-all route to circumvent the framework and instead use the [Now Routing Layer](/docs/v2/deployments/routes) to match a route to a serverless function.
 
 The example above can be seen live at <https://simple-python-flask.now-examples.now.sh/Hello>
@@ -125,16 +115,6 @@ Inside `requirements.txt` define:
 
 ```
 sanic==19.6.0
-```
-
-And define a `now.json` like so:
-
-```json
-{
-  "version": 2,
-  "builds": [{ "src": "index.py", "use": "@now/python" }],
-  "routes": [{ "src": "(.*)", "dest": "index.py" }]
-}
 ```
 
 Most frameworks use their own implementation of routing. However, you can use a catch-all route to circumvent the framework and instead use the [Now Routing Layer](/docs/v2/deployments/routes) to match a route to a serverless function.

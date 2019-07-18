@@ -5,13 +5,14 @@ import Caption from '~/components/text/caption'
 import Example from '~/components/example'
 import Tag from '~/components/text/tag'
 import Note from '~/components/text/note'
+import { GenericLink } from '~/components/text/link'
 
 export const meta = {
   title: 'Go Builder (@now/go)',
   description:
     'The official Go Builder for ZEIT Now. Serverless invokable functions from Go source code for ZEIT Now deployments.',
   editUrl: 'pages/docs/v2/advanced/builders/go-now-go.mdx',
-  lastEdited: '2019-07-16T12:01:51.000Z'
+  lastEdited: '2019-07-18T13:45:29.000Z'
 }
 
 <Tag>Status: Alpha</Tag>
@@ -24,7 +25,7 @@ Whenever you want to expose an API or a function written in Go.
 
 ## How to Use It
 
-Define a `index.go` file inside a folder as follows:
+Define a `index.go` file inside an `/api` directory as follows:
 
 ```go
 package handler
@@ -39,14 +40,14 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 }
 ```
 
-And define a `now.json` like:
-
-```json
-{
-  "version": 2,
-  "builds": [{ "src": "*.go", "use": "@now/go" }]
-}
-```
+<Note>
+  If you want to use a directory name other than <InlineCode>/api</InlineCode>,
+  read the{' '}
+  <GenericLink href="/docs/v2/advanced/builds">
+    Builds documentation
+  </GenericLink>
+  .
+</Note>
 
 Notice that the API is cohesive with the `net/http` Go API. Your main entrypoint function **must be** an exported function.
 

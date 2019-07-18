@@ -14,7 +14,7 @@ export const meta = {
   description:
     'The official Node.js Server Builder for ZEIT Now. Deploy a Node.js server on ZEIT Now.',
   editUrl: 'pages/docs/v2/advanced/builders/node-js-server-now-node-server.mdx',
-  lastEdited: '2019-07-16T12:01:51.000Z'
+  lastEdited: '2019-07-18T13:45:29.000Z'
 }
 
 <Tag>Status: Deprecated</Tag>
@@ -75,15 +75,6 @@ require('http')
     res.end('Hello from a vanilla server!')
   })
   .listen()
-```
-
-Finally we will configure a `now.json` that builds our directories concurrently to turn them into [Lambdas](/docs/v2/deployments/concepts/lambdas) that can be invoked on demand:
-
-```json
-{
-  "version": 2,
-  "builds": [{ "src": "*/index.js", "use": "@now/node-server" }]
-}
 ```
 
 As a result, our deployment will have two routes:

@@ -15,7 +15,7 @@ export const meta = {
   description:
     'The official Node.js Builder for ZEIT Now. Deploy serverless Node.js applications with ease.',
   editUrl: 'pages/docs/v2/advanced/builders/node-js-now-node.mdx',
-  lastEdited: '2019-07-16T12:01:51.000Z'
+  lastEdited: '2019-07-18T13:45:29.000Z'
 }
 
 <Tag>Status: Stable</Tag>
@@ -39,6 +39,15 @@ cd my-node-project/api/hello`}</TerminalInput>
 
 Inside `my-node-project > api > hello` we will create an `index.js` file.
 
+<Note>
+  If you want to use a directory name other than <InlineCode>/api</InlineCode>,
+  read the{' '}
+  <GenericLink href="/docs/v2/advanced/builds">
+    Builds documentation
+  </GenericLink>
+  .
+</Note>
+
 The `index.js` file exports a Node.js function that takes in [the standard Node.js request and response](#request-and-response-objects) objects:
 
 ```js
@@ -61,20 +70,6 @@ module.exports = (req, res) => {
     Request and Response Objects
   </GenericLink> section.
 </Note>
-
-The only step left is to define a build that will take this directory's entrypoint (`index.js`), build it and turn it into a lambda:
-
-```json
-{
-  "version": 2,
-  "builds": [{ "src": "api/hello/index.js", "use": "@now/node" }]
-}
-```
-
-<Caption>
-  An example <InlineCode>now.json</InlineCode> configuration using the{' '}
-  <InlineCode>@now/node</InlineCode> builder.
-</Caption>
 
 Our resulting deployment is here: <https://my-node-project-5gkn6kqfy.now.sh/>
 
@@ -251,35 +246,6 @@ module.exports = async (req, res) => {
 ```
 
 <Caption>An example showcasing the use of an asynchronous function.</Caption>
-
-## Deploying with Static Content
-
-You can upload static content alongside your Node.js application by using [the `@now/static` Builder](/docs/v2/deployments/official-builders/static-now-static).
-
-For example, if you have a `/static` directory and an `index.js` like the one from the example above, you can serve that directory statically by extending your `now.json` configuration:
-
-```json
-{
-  "version": 2,
-  "builds": [
-    { "src": "api/hello/index.js", "use": "@now/node" },
-    { "src": "static/**", "use": "@now/static" }
-  ]
-}
-```
-
-<Caption>
-  Deploying a serverless Node.js function along with static files.
-</Caption>
-
-For more information on including static files in your project, read the documentation for `@now/static`:
-
-<Card
-  title="Now Static Builder"
-  href="/docs/v2/deployments/official-builders/static-now-static"
->
-  Deploy static files along with lambdas.
-</Card>
 
 ## Technical Details
 
