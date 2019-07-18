@@ -45,7 +45,7 @@ function Landing() {
           titlePrefix=""
           tileSuffix=""
           title="ZEIT Now Docs"
-          description="Learn about serverless computing and the Now platform"
+          description="Learn how to deploy fast static websites and serverless functions."
         />
         <main>
           <section className="hero-section">
