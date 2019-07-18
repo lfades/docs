@@ -123,7 +123,7 @@
       "headers": { "Location": "/docs/v2/deployment/$1" }
     },
     {
-      "src": "/docs/examples/(.*)",
+      "src": "/examples",
       "status": 301,
       "headers": { "Location": "https://github.com/zeit/now-examples" }
     },
