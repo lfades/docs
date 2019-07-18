@@ -83,7 +83,7 @@
     {
       "src": "/docs/examples/(.*)",
       "status": 301,
-      "headers": { "Location": "/docs/v1/examples/$1" }
+      "headers": { "Location": "https://github.com/zeit/now-examples" }
     },
     {
       "src": "/docs/other/(.*)",
