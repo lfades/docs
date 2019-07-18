@@ -153,14 +153,14 @@
       "headers": { "Location": "/examples/express" }
     },
     {
-      "src": "/docs/v2/deployments/configuration/(.*)/?",
+      "src": "/docs/v2/deployments/configuration?",
       "status": 301,
       "headers": { "Location": "/docs/v2/advanced/configuration/$1" }
     },
     {
-      "src": "/docs/v2/deployments/routes/(.*)/?",
+      "src": "/docs/v2/deployments/routes",
       "status": 301,
-      "headers": { "Location": "/docs/v2/advanced/routes/$1" }
+      "headers": { "Location": "/docs/v2/advanced/routes/" }
     },
     {
       "src": "/docs/v2/deployments/builds/(.*)/?",
