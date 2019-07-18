@@ -153,9 +153,9 @@
       "headers": { "Location": "/examples/express" }
     },
     {
-      "src": "/docs/v2/deployments/configuration?",
+      "src": "/docs/v2/deployments/configuration",
       "status": 301,
-      "headers": { "Location": "/docs/v2/advanced/configuration/$1" }
+      "headers": { "Location": "/docs/v2/advanced/configuration/" }
     },
     {
       "src": "/docs/v2/deployments/routes",
