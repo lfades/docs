@@ -175,6 +175,8 @@ function Category({ info, level = 1, ...props }) {
 }
 
 function Post({ info, level = 1, ...props }) {
+  const levelClass = `level-${level}`
+
   if (info.posts) {
     return <Category info={info} level={level} {...props} />
   }
@@ -182,7 +184,7 @@ function Post({ info, level = 1, ...props }) {
   return (
     <div
       key={info.href}
-      className={cn('link', { separated: info.sidebarSeparator })}
+      className={cn('link', levelClass, { separated: info.sidebarSeparator })}
     >
       <NavLink
         info={info}
@@ -195,6 +197,10 @@ function Post({ info, level = 1, ...props }) {
       <style jsx>{`
         .link {
           margin: 18px 0;
+        }
+
+        .link.level-1 {
+          margin-left: 21px;
         }
 
         .link:first-child {
