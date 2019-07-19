@@ -12,7 +12,7 @@ export const meta = {
   title: 'Supported Lanaguages for Serverless Functions',
   description: 'Learn how to deploy serverless functions with ZEIT Now.',
   editUrl: 'pages/docs/v2/serverless-functions/supported-languages.mdx',
-  lastEdited: '2019-07-19T15:51:07.000Z'
+  lastEdited: '2019-07-19T17:31:20.000Z'
 }
 
 Within the `api` directory of your projects, ZEIT Now will automatically recognise the languages listed on this page, through their file extensions, and serve them as serverless function.
@@ -101,7 +101,7 @@ You can also define a `tsconfig.json` to configure the Now TypeScript compiler:
 
 For each request of a Node.js serverless function, two objects, request and response, are passed to it. These objects are the standard HTTP [request](https://nodejs.org/api/http.html#http_event_request) and [response](https://nodejs.org/api/http.html#http_class_http_serverresponse) objects given and used by Node.js, but they include extended helpers provided by Now:
 
-#### Helpers
+#### Node.js Helpers
 
 <br />
 
@@ -185,7 +185,7 @@ In this example, we use the package `asciify-image` to create [ascii art](https:
 npm i --save asciify-image
 ```
 
-In our code, we export an asynchronous function and we take advantage of the helpers.
+In our code, we export an asynchronous function and we take advantage of the [helpers](#node.js-helpers).
 
 ```js
 const asciify = require('asciify-image')

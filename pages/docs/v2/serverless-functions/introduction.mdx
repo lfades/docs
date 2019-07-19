@@ -12,23 +12,23 @@ export const meta = {
   title: 'Serverless Functions',
   description: 'Learn how to deploy serverless functions with ZEIT Now.',
   editUrl: 'pages/docs/v2/serverless-functions/introduction.mdx',
-  lastEdited: '2019-07-19T17:15:44.000Z'
+  lastEdited: '2019-07-19T17:31:20.000Z'
 }
 
 ZEIT Now deployments support various backend languages that you can deploy as Serverless functions.
 
 ## Deploying Serverless Functions
 
-To deploy serverless functions without any additional configuration, you can put files containing backend languages and exported functions in the `api` directory at your project's root.
+To deploy serverless functions without any additional configuration, you can put files with extensions matching [supported languages](/docs/v2/serverless-functions/supported-languages) and exported functions in the `api` directory at your project's root.
 
 Then, using [Now CLI](/download), run the following command to deploy from your terminal:
 
 <TerminalInput>now</TerminalInput>
 <Caption>Deploying a project with Now CLI in one command.</Caption>
 
-### Node.js Example
+### Example Node.js API
 
-To deploy a serverless Node.js API, provide a main export function like the following, in a `.js` file within the `api` directory:
+To deploy a [serverless Node.js API](/docs/v2/serverless-functions/supported-languages#node.js), provide a main export function like the following, in a `.js` file within the `api` directory:
 
 ```js
 module.exports = (request, response) => {
@@ -54,14 +54,51 @@ The resulting deployment will contain your Node.js endpoint as a serverless func
   .
 </Note>
 
-### More Examples
+### More Examples and Supported Languages
 
-For more examples of applications you can deploy using serverless functions, go to the [ZEIT Now examples repository on GitHub](https://github.com/zeit/now-examples).
+For all supported languages, see the [Supported Languages for Severless Functions documentation](/docs/v2/serverless-functions/supported-languages).
+
+More examples of applications you can deploy paired with serverless functions can be found in the [ZEIT Now examples repository on GitHub](https://github.com/zeit/now-examples).
 
 You can use any of the ZEIT Now examples by using the following command from [Now CLI](/download) in your terminal, then choosing an application to start with:
 
 <TerminalInput>now init</TerminalInput>
 <Caption>Initializing a project with Now CLI.</Caption>
+
+## Path Segments
+
+Deploying serverless functions with ZEIT Now gives you the ability to use path segments through file names instead of a complex routes file.
+
+Creating a file using any of the [supported languages](/docs/v2/serverless-functions/supported-languages) in the `api` directory and wrapping the filename in square brackets, such as `[name].js` will provide you with a file that takes a path segment and gives it to the function when requested with a value.
+
+For example, creating a `name` directory (within `/api`) with a `[name].js` file will allow you to recieve the path segment entered when accessing `/api/name/your-name`.
+
+The following Node.js example code could then use the path segment in its functionality when requested:
+
+```js
+module.exports = (req, res) => {
+  const {
+    query: { name }
+  } = req
+
+  res.send(`Hello ${name}!`)
+}
+```
+
+<Caption>
+  An example of a Node.js serverless function that takes a name path segement
+  and returns a string using it.
+</Caption>
+
+The resulting deployment can be found here: <https://path-segment-with-node.now-examples.now.sh/api/name/world>
+
+<Note>
+  Any{' '}
+  <GenericLink href="/docs/v2/serverless-functions">
+    supported language
+  </GenericLink>{' '}
+  can utilize path segments.
+</Note>
 
 ## Local Development
 
