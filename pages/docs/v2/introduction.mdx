@@ -12,7 +12,7 @@ export const meta = {
   description:
     'An introduction to the ZEIT Now platform and how to get started deploying any kind of application.',
   editUrl: 'pages/docs/v2/introduction.mdx',
-  lastEdited: '2019-07-19T17:15:44.000Z'
+  lastEdited: '2019-07-19T17:33:07.000Z'
 }
 
 ZEIT Now is a cloud platform for **static sites** and **serverless functions**. It enables developers to host websites and web services that **deploy instantly**, **scale automatically**, and requires **no supervision**, all with **no configuration**.
@@ -58,6 +58,11 @@ These URLs look like the following:
 
 For more information on what to do next, we recommend the following articles:
 
+<Card title="Git Integration" href="/docs/v2/git-integration">
+  Learn more about how ZEIT Now integrates with Git to make your workflow
+  easier.
+</Card>
+
 <Card
   title="Aliasing Your Projects"
   href="/docs/v2/custom-domains#aliasing-a-project"
@@ -65,11 +70,6 @@ For more information on what to do next, we recommend the following articles:
   Once deployed, your projects can be aliased to a custom domain or specified
   name or your choice to give it a primary place to see the latest version of
   your application.
-</Card>
-
-<Card title="Deployment Basics" href="/docs/v2/deployment/deployment-basics">
-  Learn more about deploying application with ZEIT Now and how you can extend
-  your workflow to get the most out of your projects.
 </Card>
 
 export default ({ children }) => <Doc meta={meta}>{children}</Doc>
