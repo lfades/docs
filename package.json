@@ -3,7 +3,7 @@
   "version": "5.15.15",
   "private": true,
   "scripts": {
-    "dev": ".next",
+    "dev": "next",
     "build": "cross-env NODE_ENV=production next build",
     "now-build": "yarn run build && yarn run export",
     "now-dev": "next -p $PORT",
