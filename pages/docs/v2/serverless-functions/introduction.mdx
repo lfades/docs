@@ -26,9 +26,7 @@ Then, using [Now CLI](/download), run the following command to deploy from your 
 <TerminalInput>now</TerminalInput>
 <Caption>Deploying a project with Now CLI in one command.</Caption>
 
-For additional examples, the following guides your through deploying APIs with serverless functions in different backend languages:
-
-### Deploying a Node.js API
+### Node.js Example
 
 To deploy a serverless Node.js API, provide a main export function like the following, in a `.js` file within the `api` directory:
 
@@ -51,65 +49,6 @@ The resulting deployment will contain your Node.js endpoint as a serverless func
 <Note>
   For more information on how Node.js works with ZEIT Now, view the technical{' '}
   <GenericLink href="/docs/v2/advanced/builders/node-js-now-node">
-    reference for the runtime
-  </GenericLink>
-  .
-</Note>
-
-### Deploying a Go API
-
-To deploy a serverless Go API, provide an exported function like the following, cohesive with the `net/http` Go API, in a `.go` file within the `api` directory:
-
-```go
-package handler
-
-import (
-        "fmt"
-        "net/http"
-)
-
-func Handler(w http.ResponseWriter, r *http.Request) {
-        fmt.Fprintf(w, "<h1>Hello from Go on Now!</h1>")
-}
-```
-
-<Caption>An example Go serverless function that returns a string.</Caption>
-
-Then, deploying with Now CLI with the `now` command from your terminal will result in a serverless Go function and with a link like the following: <https://go-api.now-examples.now.sh/api/hello>
-
-<Note>
-  For more information on how Go works with ZEIT Now, view the technical{' '}
-  <GenericLink href="/docs/v2/advanced/builders/go-now-go">
-    reference for the runtime
-  </GenericLink>
-  .
-</Note>
-
-### Deploying a Python API
-
-To deploy a serverless Python API, provide an exported function, like the following, with `handler` defined, in a `.py` file in the `api` directory:
-
-```python
-from http.server import BaseHTTPRequestHandler
-from datetime import datetime
-
-class handler(BaseHTTPRequestHandler):
-
-  def do_GET(self):
-    self.send_response(200)
-    self.send_header('Content-type', 'text/plain')
-    self.end_headers()
-    self.wfile.write(str(datetime.now().strftime('%Y-%m-%d %H:%M:%S')).encode())
-    return
-```
-
-<Caption>A serverless Python function that returns the current date.</Caption>
-
-Then, deploying with Now CLI with the `now` command from your terminal will result in a serverless Python function and with a link like the following: <https://python-api.now-examples.now.sh/api/date>
-
-<Note>
-  For more information on how Python works with ZEIT Now, view the technical{' '}
-  <GenericLink href="/docs/v2/advanced/builders/python-now-python">
     reference for the runtime
   </GenericLink>
   .
