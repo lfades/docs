@@ -1,0 +1,46 @@
+import Doc from '~/components/layout/docs'
+import { TerminalInput } from '~/components/text/terminal'
+import { GenericLink } from '~/components/text/link'
+import Caption from '~/components/text/caption'
+import Now from '~/components/text/now'
+import Note from '~/components/text/note'
+import Card from '~/components/card'
+import Introduction from '~/components/docs/introduction-deploy'
+
+export const meta = {
+  title: 'ZEIT Now Git Integrations',
+  description:
+    'How to use the ZEIT Now Git Integrations for automatic deployments from your repository.',
+  editUrl: 'pages/docs/v2/basics/git-integration.mdx',
+  lastEdited: '2019-07-18T16:49:23.000Z'
+}
+
+ZEIT Now provides integrations for your [GitHub](https://github.com) and [GitLab](https://gitlab.com) projects, allowing for automatic deployments on every branch push and merge to the default branch.
+
+To get started with a Git integration, visit the settings page in your ZEIT dashboard and connect the relevant integration.
+
+Once installed, you will benefit from the following features:
+
+- Deployments for every push in branches and pull requests to preview changes live
+- Aliases for the most recent changes from the master branch
+- Instant rollbacks when reverting changes that have been aliased
+
+## Related
+
+For more information on what to do next, we recommend the following articles:
+
+<Card
+  title="Aliasing Your Projects"
+  href="/docs/v2/domains-and-aliases/aliasing-a-deployment"
+>
+  Once deployed, your projects can be aliased to a custom domain or specified
+  name or your choice to give it a primary place to see the latest version of
+  your application.
+</Card>
+
+<Card title="Deployment Basics" href="/docs/v2/deployment/deployment-basics">
+  Learn more about deploying application with ZEIT Now and how you can extend
+  your workflow to get the most out of your projects.
+</Card>
+
+export default ({ children }) => <Doc meta={meta}>{children}</Doc>

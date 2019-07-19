@@ -80,7 +80,7 @@
     {
       "src": "/docs/v2/getting-started/(.*)/?",
       "status": 301,
-      "headers": { "Location": "/docs/v2/introduction" }
+      "headers": { "Location": "/docs/v2/basics/introduction" }
     },
     {
       "src": "/docs/v2/deployments/(?:builders|official-builders)/(.*)/?",
