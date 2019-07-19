@@ -11,7 +11,7 @@ export const meta = {
   title: 'Adding a Domain to Now',
   description: 'Adding and using a domain to use with deployments on ZEIT Now.',
   editUrl: 'pages/docs/v2/domains/adding-a-domain.mdx',
-  lastEdited: '2019-07-18T19:04:54.000Z'
+  lastEdited: '2019-07-19T08:36:20.000Z'
 }
 
 With Now, you can alias your deployments to a custom name, whether that is a free `.now.sh` prefixed domain or your personal domain. This document will explain how to add your domain to Now so that you can alias your deployments to it.
@@ -56,7 +56,12 @@ That's it! You're ready to [alias your deployments](/docs/v2/domains-and-aliases
 
 If you prefer to use other nameservers, you can verify your domain using `TXT` verification and add `CNAME` records with the value `alias.zeit.co` for the hostnames you want to alias within Now. This means that you will not be using ZEIT DNS and your domain will be marked as external.
 
-For a greater advantage with Now and your domain, we strongly recommend using the [nameservers method](#option-1:-using-zeit-nameservers).
+<Note warning>
+  If your DNS does not support CNAME, ALIAS, and DNS flattening, you will not be
+  able to use apex domain with us.
+</Note>
+
+For a greater advantage with Now and your domain, we strongly recommend using the [ZEIT nameservers method](#option-1:-using-zeit-nameservers).
 
 To use a domain with external nameservers with Now, first add it to your account using the `now domains add` command:
 
