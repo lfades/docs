@@ -11,18 +11,26 @@ export const meta = {
   description:
     'How to use the ZEIT Now Git Integrations for automatic deployments from your repository.',
   editUrl: 'pages/docs/v2/git-integration.mdx',
-  lastEdited: '2019-07-19T17:33:07.000Z'
+  lastEdited: '2019-07-19T22:00:51.000Z'
 }
 
-ZEIT Now provides integrations for your [GitHub](https://github.com) and [GitLab](https://gitlab.com) projects, allowing for automatic deployments on every branch push and merge to the default branch.
+ZEIT Now provides integrations for your [GitHub](https://github.com) and [GitLab](https://gitlab.com) projects, allowing for **automatic deployments on every branch push** and merge to the default branch.
 
-To get started with a Git integration, visit the settings page in your ZEIT dashboard and connect the relevant integration.
-
-Once installed, you will benefit from the following features:
+In addition, the ZEIT Now Git integrations provide the following benefits:
 
 - Deployments for every push in branches and pull requests to preview changes live
 - Aliases for the most recent changes from the master branch
 - Instant rollbacks when reverting changes that have been aliased
+
+The easiest way to use a Git integration is to think of your **master branch as production**. Every time a pull request is made to the master branch, Now will **create a unique deployment**, allowing you to **view the changes in a staging environment before merging**.
+
+## Installation
+
+To get started with a Git integration, visit the settings page in your ZEIT dashboard and click to connect the relevant integration.
+
+You will be asked to authorize the integration and advised as to what permissions it requires before being redirected to your account dashboard.
+
+Once installed, the integration will be available to all of your repositories and projects immediately, requiring no configuration.
 
 ## Related
 
