@@ -7,15 +7,18 @@ import Note from '~/components/text/note'
 import Card from '~/components/card'
 import { InlineCode } from '~/components/text/code'
 import { P } from '~/components/text/paragraph'
+import CheckmarkInCircle from '~/components/icons/checkmark-in-circle'
 
 export const meta = {
   title: 'Build Step',
   description: 'Providing ZEIT Now with a build step.',
   editUrl: 'pages/docs/v2/build-step.mdx',
-  lastEdited: '2019-07-19T20:05:56.000Z'
+  lastEdited: '2019-07-19T22:19:53.000Z'
 }
 
 When you make a deployment with ZEIT Now, the first step is the build step. This means that Now recognizes a custom `build` script will be recognized by Now, with that build script outputting your app into the `public` directory.
+
+ZEIT Now also supports optimized frameworks that only need to be created and then they are ready to deploy with [Now CLI](/download) from the terminal.
 
 You are also able to use [Environment Variables](#using-environment-variables-and-secrets) (including secrets) in your builds if you do not want to hardcode values for the build.
 
@@ -92,6 +95,24 @@ process.env.VARIABLE_NAME
 </Caption>
 
 Now, whenever the `process.env.VARIABLE_NAME` key is used, it will provide the application's build step with the value declared by the referenced **Now Secret**.
+
+## Optimized Frameworks
+
+A variety of frameworks have been optimized for ZEIT Now deployments so that they are served with unparalleled defaults.
+
+The following list contains those frameworks that have been optimized and what has been done to aid their performance only on Now. Any getting started method will immediately be ready to deploy with [Now CLI's `now` command](/downlaod) from the terminal, or to be deployed with a [Git integration](/docs/v2/git-integration):
+
+| Framework        | Get Started Command                             | Automatically Optimized        |
+| ---------------- | ----------------------------------------------- | ------------------------------ |
+| Preact           | `npx preact-cli default my-preact-project`      | <CheckmarkInCircle size="24"/> |
+| Vue.js           | `npx @vue/cli create my-vue-project`            | <CheckmarkInCircle size="24"/> |
+| Angular          | `npx @angular/cli new my-angular-project`       | <CheckmarkInCircle size="24"/> |
+| Svelte           | `npx degit sveltejs/template my-svelte-project` | <CheckmarkInCircle size="24"/> |
+| Polymer          | `npx polymer-cli init polymer-3-starter-kit`    | <CheckmarkInCircle size="24"/> |
+| Create React App | `npx create-react-app my-cra-project`           | <CheckmarkInCircle size="24"/> |
+| Gridsome         | `npx @gridsome/cli create my-gridsome-project`  | <CheckmarkInCircle size="24"/> |
+| UmiJS            | `npm create umi my-umi-project`                 | <CheckmarkInCircle size="24"/> |
+| Docusaurus       | `npx docusaurus-init`                           | <CheckmarkInCircle size="24"/> |
 
 ## Related
 
