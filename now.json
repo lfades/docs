@@ -27,7 +27,7 @@
       "src": "/docs/github",
       "status": 301,
       "headers": {
-        "Location": "/docs/v2/advanced/git-integrations/now-for-github"
+        "Location": "/docs/v2/advanced/now-for-github"
       }
     },
     {
@@ -222,7 +222,7 @@
       "src": "/docs/v2/integrations/(.*)",
       "status": 301,
       "headers": {
-        "Location": "/docs/v2/advanced/git-integrations/$1"
+        "Location": "/docs/v2/advanced/$1"
       }
     },
     { "src": "(.*)", "dest": "$1" }
