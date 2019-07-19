@@ -12,7 +12,7 @@ export const meta = {
   title: 'Custom Domains',
   description: 'How to add and use a custom domain with your project.',
   editUrl: 'pages/docs/v2/custom-domains.mdx',
-  lastEdited: '2019-07-19T17:33:07.000Z'
+  lastEdited: '2019-07-19T19:37:08.000Z'
 }
 
 With Now, you can alias your deployments to a custom name, whether that is a free `.now.sh` prefixed domain or your personal domain. This document will explain how to add your domain to Now so that you can alias your deployments to it.
@@ -90,9 +90,9 @@ This command will print your current and intended nameservers.
 
 Once you change the nameservers with your domain provider and the domain propagates, your domain will point to Now and you can access your deployments from that domain.
 
-## Aliasing a Project
+## Deploying with Your Domain
 
-To use the custom domain with your project, you must add an alias to the project from the **Domains** section of the project dashboard.
+To use the custom domain with your project, you can add it to your project from the **Domains** section of the project dashboard.
 
 <Note hint>
   A project is defined when first deploying (using the directory name), or when
@@ -103,13 +103,33 @@ To use the custom domain with your project, you must add an alias to the project
   .
 </Note>
 
-To do this, select the project from the dashboard and click the **Domains** tab. Here you will find two options representing different deployment environments, **Staging** and **Production**. Choose the environment for your desired alias and enter the alias, for example, `timothy.now.sh`, into the input box.
+To do this, select your project from the dashboard and click the **Domains** tab. Here you will find two options representing different deployment environments, **Staging** and **Production**. Choose the environment for your desired alias and enter it, for example, `timothy.now.sh` or `my-zeit-domain.com`, into the input box.
 
-If the domain is **registered to your account and available for use**, this will be indicated below the input box.
+If the domain is **registered to your account and available for use** it will be indicated below the input box and you can continue.
 
 If the domain is **not registered to your account**, it will automatically be added and we will attempt to verify it for you.
 
-Once the alias has been added, the interface will update to reflect this along with further information such as instructions on how to use it, this will be explored further later on in this document.
+Once the alias has been added, the interface will update to reflect this along with further information such as instructions on how to use it, read on to learn more about how to use it, here.
+
+### Using Now CLI
+
+With a custom domain defined as staging, production, or both; you can go on to use it with your deployments.
+
+To deploy your project to your staging domain, you can use the `--target staging` argument from Now CLI in your terminal:
+
+<TerminalInput>now --target staging</TerminalInput>
+<Caption>Deploying a project to staging.</Caption>
+
+When you're ready to deploy your project to production, you can use the `--target production` argument from Now CLI in your terminal:
+
+<TerminalInput>now --target production</TerminalInput>
+<Caption>Deploying a project to production.</Caption>
+
+### With Git
+
+When a custom domain is assigned as a production domain to a project that is connected to a GitHub repository or GitLab project with a [Now for Git integration](/docs/v2/git-integration) enabled, each push (including merges) to the default branch (commonly `master`) will trigger a deployment that targets the defined domain.
+
+Additionally, reverts will automatically and immediately assign to the domain so that if you have a bug, you do not have to wait for it to be deployed.
 
 ## Related
 
