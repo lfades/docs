@@ -69,11 +69,11 @@ Specifies the [Now Platform version](/docs/v2/platform/overview#versioning) the 
 
 **Type**: `Array` or `String`.
 
-**Valid values**: [domain names](/docs/v2/domains-and-aliases/adding-a-domain) (optionally including subdomains) added to the account, or a string for a suffxed URL using `.now.sh` or a [Custom Deployment Suffix](/docs/v2/platform/add-ons/#custom-deployment-suffix).
+**Valid values**: [domain names](/docs/v2/custom-domains) (optionally including subdomains) added to the account, or a string for a suffxed URL using `.now.sh` or a [Custom Deployment Suffix](/docs/v2/platform/add-ons/#custom-deployment-suffix).
 
 The alias or aliases are applied automatically using [Now for GitHub](/docs/v2/integrations/now-for-github) or [Now for GitLab](/docs/v2/integrations/now-for-gitlab) when merging or pushing to the default branch.
 
-You can deploy to the defined aliases using Now CLI by setting the [production deployment environment target](/docs/v2/domains-and-aliases/aliasing-a-deployment/#production).
+You can deploy to the defined aliases using Now CLI by setting the [production deployment environment target](/docs/v2/custom-domains#aliasing-a-project).
 
 <Example>
   <P.B>Usage Example:</P.B>
@@ -264,7 +264,7 @@ For more information on routes, see the documentation:
 
 By setting and modifying this value, you can decide the deployment **regions** of the [Lambdas](/docs/v2/deployments/concepts/lambdas) that get created as a result of the [build steps](/docs/v2/deployments/builds). By default, the closest region to the geographical location of the deployment is used, or if using a Now for Git integration, SFO is used by default.
 
-This value does not impact static files or edge caches, since deployments always have a [CDN layer](/docs/v2/domains-and-aliases/cdn) in front.
+This value does not impact static files or edge caches, since deployments always have a [CDN layer](/docs/v2/advanced/domains/cdn) in front.
 
 The special value `all` can be used to target all available regions.
 

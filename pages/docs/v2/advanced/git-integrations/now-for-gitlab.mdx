@@ -23,7 +23,7 @@ Now for GitLab provides:
 
 - Automatic deployments for every push to branches and merge requests to preview changes live.
 - Aliases for the most recent changes from the [default branch](https://docs.gitlab.com/ee/user/project/repository/branches/#default-branch).
-- Instant rollbacks when reverting changes that have already been [aliased](/docs/v2/domains-and-aliases/aliasing-a-deployment).
+- Instant rollbacks when reverting changes that have already been [aliased](/docs/v2/custom-domains#aliasing-a-project).
 
 <Image
   src={`${process.env.ASSETS}/guides/getting-started-with-now-for-gitlab/deploy-comment.png`}
@@ -87,13 +87,13 @@ With each new push, if Now is already building a previous commit, it will cancel
 
 ### Aliasing the Default Branch
 
-If an alias is set from the project domains dashboard, pushes and merges to the [default branch](https://docs.gitlab.com/ee/user/project/repository/branches/#default-branch) (commonly "master") will be [aliased automatically](/docs/v2/domains-and-aliases/aliasing-a-deployment) and made live to those aliases with the latest deployment made with a push.
+If an alias is set from the project domains dashboard, pushes and merges to the [default branch](https://docs.gitlab.com/ee/user/project/repository/branches/#default-branch) (commonly "master") will be [aliased automatically](/docs/v2/custom-domains#aliasing-a-project) and made live to those aliases with the latest deployment made with a push.
 
 If you decide to revert a commit that has already been aliased, the previous commit's deployment will automatically be aliased instantly; providing you with instant rollbacks.
 
 ### Staging Aliases for Each Merge Request
 
-The latest push to any merge request will automatically be aliased to a unique URL based on the project name, branch, and team or username. These URLs will be given through a comment on each merge request. For more on automatic aliases for git pushes and beyond in the [Aliasing Documentation](/docs/v2/domains-and-aliases/aliasing-a-deployment/#git-staging-aliases).
+The latest push to any merge request will automatically be aliased to a unique URL based on the project name, branch, and team or username. These URLs will be given through a comment on each merge request. For more on automatic aliases for git pushes and beyond in the [Aliasing Documentation](/docs/v2/custom-domains#aliasing-a-project).
 
 <Image
   src={`${process.env.ASSETS}/guides/getting-started-with-now-for-gitlab/merge-request-alias.png`}

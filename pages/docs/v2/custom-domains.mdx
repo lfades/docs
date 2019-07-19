@@ -51,7 +51,7 @@ Now will automatically check that the nameservers have been updated, and when de
 
 <TerminalInput>{`now domains verify <domain>`}</TerminalInput>
 
-That's it! You're ready to [alias your deployments](/docs/v2/domains-and-aliases/aliasing-a-deployment) and [create DNS records](/docs/v2/domains-and-aliases/dns). Your wildcard certificate is created automatically.
+That's it! You're ready to [alias your deployments](/docs/v2/custom-domains#aliasing-a-project) and [create DNS records](/docs/v2/advanced/domains/dns). Your wildcard certificate is created automatically.
 
 ### Option 2: Using External Nameservers
 
@@ -78,7 +78,7 @@ You can force Now to check for verification by using the `now domains verify` co
 
 This method is recommended when you want a [zero-downtime migration](/guides/zero-downtime-domain-migration/) before [pointing your domain to Now](#step-2:-pointing-to-now).
 
-For each domain you want to alias, add a `CNAME` record with a value `alias.zeit.co` to your external DNS. Then you can [alias your deployments](/docs/v2/domains-and-aliases/aliasing-a-deployment) as usual!
+For each domain you want to alias, add a `CNAME` record with a value `alias.zeit.co` to your external DNS. Then you can [alias your deployments](/docs/v2/custom-domains#aliasing-a-project) as usual!
 
 #### Moving to ZEIT Nameservers
 
@@ -117,7 +117,7 @@ For more information on what to do next, we recommend the following articles:
 
 <Card
   title="Aliasing Your Projects"
-  href="/docs/v2/domains-and-aliases/aliasing-a-deployment"
+  href="/docs/v2/custom-domains#aliasing-a-project"
 >
   Once deployed, your projects can be aliased to a custom domain or specified
   name or your choice to give it a primary place to see the latest version of

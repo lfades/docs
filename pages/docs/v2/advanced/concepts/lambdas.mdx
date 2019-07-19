@@ -18,7 +18,7 @@ export const meta = {
 
 When you make a deployment, by running `now` with our [CLI](/docs/v2/getting-started/installation#now-cli), making an [API](/api) call or with our [GitHub integration](/docs/v2/integrations/now-for-github), we synchronize the source code and optionally build them to your specification.
 
-The outputs of this build process can be static files or **serverless Lambdas**. Static files will be served directly from our [edge caches](/docs/v2/domains-and-aliases/cdn), while Lambdas contain **code** that gets executed dynamically and on-demand.
+The outputs of this build process can be static files or **serverless Lambdas**. Static files will be served directly from our [edge caches](/docs/v2/advanced/domains/cdn), while Lambdas contain **code** that gets executed dynamically and on-demand.
 
 Lambdas allow your code to be executed on-demand and scale automatically. They minimize cost in terms of infrastructure spend and engineering time, due to largely removing operational overhead and reducing the surface of error.
 
@@ -35,7 +35,7 @@ If you have these files in your deployment's directory:
 
 With `pages/index.js` being a [Next.js](nextjs.org) page without any need for server-side rendering, it will be statically exported automatically.
 
-In this case, we will want our Next.js page and `static/logo.svg` to be served statically from our [CDN](/docs/v2/domains-and-aliases/cdn).
+In this case, we will want our Next.js page and `static/logo.svg` to be served statically from our [CDN](/docs/v2/advanced/domains/cdn).
 
 <Note>
   If a Next.js page includes server-side code, it will be built as Lambdas

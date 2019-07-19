@@ -40,7 +40,7 @@
     {
       "src": "/docs/dns",
       "status": 301,
-      "headers": { "Location": "/docs/v2/domains/dns" }
+      "headers": { "Location": "/docs/v2/advanced/domains/dns" }
     },
     {
       "src": "/docs/v2/routing/(.*)/?",
