@@ -11,8 +11,8 @@ import Note from '~/components/text/note'
 export const meta = {
   title: 'Supported Lanaguages for Serverless Functions',
   description: 'Learn how to deploy serverless functions with ZEIT Now.',
-  editUrl: 'pages/docs/v2/serverless-functions.mdx',
-  lastEdited: '2019-07-18T19:04:54.000Z'
+  editUrl: 'pages/docs/v2/serverless-functions/supported-languages.mdx',
+  lastEdited: '2019-07-19T15:48:46.000Z'
 }
 
 Within the `api` directory of your projects, ZEIT Now will automatically recognise the languages listed on this page, through their file extensions, and serve them as serverless function.
@@ -47,7 +47,7 @@ module.exports = (req, res) => {
   query and returns a greeting string.
 </Caption>
 
-Example deployment: https://node-api.now-examples.now.sh/api/name?name=reader
+Example deployment: <https://node-api.now-examples.now.sh/api/name?name=reader>
 
 <Image src={`https://assets.zeit.co/image/upload/v1545360454/front/docs/official-builders/serverless-node.png`}
   width={1376/2}
@@ -75,7 +75,7 @@ export default (request: NowRequest, response: NowResponse) => {
   <InlineCode>name</InlineCode> query and returns a greeting string.
 </Caption>
 
-Example deployment: https://ts-api.now-examples.now.sh/api/name?name=reader
+Example deployment: <https://ts-api.now-examples.now.sh/api/name?name=reader>
 
 You can install the `@now/node` module for type definitions through npm:
 
@@ -266,7 +266,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
   <InlineCode>net/http</InlineCode> API.
 </Note>
 
-When deployed, the example function above will be served as a serverless function, returning the latest date. See it live with the following link: https://go-api.now-examples.now.sh/api/name
+When deployed, the example function above will be served as a serverless function, returning the latest date. See it live with the following link: <https://go-api.now-examples.now.sh/api/name>
 
 ### Private Packages for Go
 
@@ -318,7 +318,7 @@ class handler(BaseHTTPRequestHandler):
 
 <Caption>An example Python function that returns the current date.</Caption>
 
-When deployed, the example function above will be served as a serverless function, returning the current date and time. See it live with the following link: https://python-api.now-examples.now.sh/api/date
+When deployed, the example function above will be served as a serverless function, returning the current date and time. See it live with the following link: <https://python-api.now-examples.now.sh/api/date>
 
 ### Python Dependencies
 
@@ -341,7 +341,7 @@ For example, the following would go in `api/date.php`:
 
 <Caption>An example PHP file that prints the current date.</Caption>
 
-When deployed, the example PHP file above will be served as a serverless function, returning the current date and time. See it live with the following link: https://php-api.now-examples.now.sh/api/date
+When deployed, the example PHP file above will be served as a serverless function, returning the current date and time. See it live with the following link: <https://php-api.now-examples.now.sh/api/date>
 
 ## Global variables
 
