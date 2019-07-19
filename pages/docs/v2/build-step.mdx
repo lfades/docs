@@ -12,16 +12,36 @@ export const meta = {
   title: 'Build Step',
   description: 'Providing ZEIT Now with a build step.',
   editUrl: 'pages/docs/v2/build-step.mdx',
-  lastEdited: '2019-07-19T17:33:07.000Z'
+  lastEdited: '2019-07-19T20:05:56.000Z'
 }
 
-To build your project, Now looks for a build script inside of a `package.json` file. By providing a build script, Now will build your project from fresh on every deployment.
+When you make a deployment with ZEIT Now, the first step is the build step. This means that Now recognizes a custom `build` script will be recognized by Now, with that build script outputting your app into the `public` directory.
 
-It is also possible that your build script will require an environment variable, allowing to behave differently, based on the environment it is building for.
+You are also able to use [Environment Variables](#using-environment-variables-and-secrets) (including secrets) in your builds if you do not want to hardcode values for the build.
 
-Adding environment variables requires two steps, defining the environment variable as a secret, then making it available to your build process.
+## Defining a Build Script
 
-## Adding Secrets
+To build your project, Now looks for a `build` script inside of a `package.json` file. By providing a build script, Now will build your project from fresh on every deployment.
+
+For example, to build Next.js fresh, each time you deploy, the following `build` script should be placed in the `package.json`:
+
+```json
+{
+  ...
+  "scripts": {
+    "build": "next build"
+  }
+}
+```
+
+<Caption>
+  An example <InlineCode>package.json</InlineCode> file with a{' '}
+  <InlineCode>build</InlineCode> script that builds Next.js on each deploy.
+</Caption>
+
+## Using Environment Variables and Secrets
+
+### Adding Secrets
 
 To define an environment variable, you should use **Now Secrets**. By using **Now Secrets**, the data will be encrypted and stored securely, no longer directly accessible by anyone, and only exposed to deployments as environment variables.
 
@@ -42,7 +62,7 @@ To **rename a Now Secret**, use the following command:
 <TerminalInput><P.B>now secrets rename </P.B>secret-name new-name</TerminalInput>
 <Caption>Renaming a <P.B>Now Secret</P.B> using <GenericLink href="/now">Now CLI</GenericLink>.</Caption>
 
-## Providing Environment Variables
+### Providing Environment Variables
 
 To provide your project with environment variables during the build script, you should create a `now.json` file like the one below:
 
@@ -82,13 +102,10 @@ For more information on what to do next, we recommend the following articles:
   easier.
 </Card>
 
-<Card
-  title="Aliasing Your Projects"
-  href="/docs/v2/custom-domains#aliasing-a-project"
->
+<Card title="Custom Domains" href="/docs/v2/custom-domains">
   Once deployed, your projects can be aliased to a custom domain or specified
-  name or your choice to give it a primary place to see the latest version of
-  your application.
+  name of your choice to give it a primary place for people to see the latest
+  version of your application.
 </Card>
 
 export default ({ children }) => <Doc meta={meta}>{children}</Doc>
