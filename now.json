@@ -110,16 +110,43 @@
       "headers": { "Location": "/docs/v2/deployment-basics$1" }
     },
     {
+      "src": "/docs/v2/development/environment-variables(.*)",
+      "status": 301,
+      "headers": {
+        "Location": "/docs/v2/serverless-functions/env-and-secrets"
+      }
+    },
+    {
       "src": "/docs/v2/development/(.*)",
       "status": 301,
       "headers": {
-        "Location": "/docs/v2/deployment/serverless-functions#local-development"
+        "Location": "/docs/v2/serverless-functions/introduction"
       }
     },
     {
       "src": "/docs/v2/deployments/.*",
       "status": 301,
       "headers": { "Location": "/docs/v2/deployment-basics" }
+    },
+    {
+      "src": "/docs/v2/domains-and-aliases/aliasing-a-deployment",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/custom-domains#aliasing-a-project" }
+    },
+    {
+      "src": "/docs/v2/domains-and-aliases/cdn",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/serverless-functions/edge-caching" }
+    },
+    {
+      "src": "/docs/v2/domains-and-aliases/dns/",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/advanced/domains/dns" }
+    },
+    {
+      "src": "/docs/v2/domains-and-aliases/(.*)",
+      "status": 301,
+      "headers": { "Location": "/docs/v2/custom-domains" }
     },
     {
       "src": "/examples",
