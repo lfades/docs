@@ -18,7 +18,7 @@ export const meta = {
     process.env.ASSETS
   }/guides/deploying-next-mysql-with-now/deploying-next-mysql-with-now.png`,
   editUrl: 'pages/guides/deploying-next-and-mysql-with-now.mdx',
-  lastEdited: '2019-08-28T13:42:24.000Z'
+  lastEdited: '2019-08-29T03:47:23.000Z'
 }
 
 In this guide, we will walk you through creating and [deploying](/docs/v2/deployments/basics/) a [Next.js](https://nextjs.org/) app with the most popular open source database in the world, [MySQL](https://www.mysql.com/), on [ZEIT Now](/docs/v2).
@@ -309,7 +309,7 @@ function HomePage({ profiles, page, pageCount }) {
       <ul>
         {profiles.map(p => (
           <li className="profile" key={p.id}>
-            <Link prefetch href={`/profile?id=${p.id}`}>
+            <Link href={`/profile?id=${p.id}`}>
               <a>
                 <img src={p.avatar} />
                 <span>{p.name}</span>
@@ -320,12 +320,12 @@ function HomePage({ profiles, page, pageCount }) {
       </ul>
       <nav>
         {page > 1 && (
-          <Link prefetch href={`/?page=${page - 1}&limit=9`}>
+          <Link href={`/?page=${page - 1}&limit=9`}>
             <a>Previous</a>
           </Link>
         )}
         {page < pageCount && (
-          <Link prefetch href={`/?page=${page + 1}&limit=9`}>
+          <Link href={`/?page=${page + 1}&limit=9`}>
             <a className="next">Next</a>
           </Link>
         )}
@@ -374,7 +374,7 @@ function ProfilePage({ profile }) {
         <h1>{profile.name}</h1>
         <p>{profile.address}</p>
         <p>{profile.email}</p>
-        <Link prefetch href="/">
+        <Link href="/">
           <a>← Back to profiles</a>
         </Link>
       </div>
