@@ -123,7 +123,7 @@ module.exports = phase => {
 
   const rehypePrism = require('@mapbox/rehype-prism')
   // Adds github.com/mdx-js/mdx to Next.js
-  const withMDX = require('@zeit/next-mdx')({
+  const withMDX = require('@next/mdx')({
     extension: /\.(md|mdx)?$/,
     options: {
       hastPlugins: [rehypePrism]
