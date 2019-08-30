@@ -34,7 +34,6 @@
     "cross-env": "5.2.0",
     "date-fns": "1.29.0",
     "dateformat": "3.0.3",
-    "extract-mdx-metadata": "1.0.0",
     "fs-extra": "7.0.1",
     "git-jiggy": "1.0.1",
     "globby": "9.1.0",
