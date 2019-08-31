@@ -9,8 +9,6 @@
     "start": "next start",
     "lint": "eslint . --ext js,mdx",
     "test": "yarn run lint",
-    "export": "next export -o dist",
-    "now-build": "yarn run build && yarn run export",
     "update-mdx-meta": "node scripts/update-mdx-meta",
     "prettier": "prettier --write \"**/*.{js,json,md,mdx}\"",
     "docs-index": "node ./scripts/index-docs.js"
