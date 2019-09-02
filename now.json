@@ -3,6 +3,11 @@
   "public": true,
   "routes": [
     {
+      "src": "/(.*)/$",
+      "dest": "/$1",
+      "continue": true
+    },
+    {
       "src": "/docs/router-status/(?<code>[^/]*)",
       "status": 301,
       "headers": { "Location": "/docs/v2/network/status-codes#$code" }
@@ -240,10 +245,6 @@
       "headers": {
         "Location": "/docs/v2/advanced/platform/frequently-asked-questions#platform-version-detection"
       }
-    },
-    {
-      "src": "/(.*)/$",
-      "dest": "/$1"
     }
   ]
 }
